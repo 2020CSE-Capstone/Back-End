@@ -33,6 +33,7 @@ dependencies {
 	// lombok
 	runtimeOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+	
 }
 
 test {
