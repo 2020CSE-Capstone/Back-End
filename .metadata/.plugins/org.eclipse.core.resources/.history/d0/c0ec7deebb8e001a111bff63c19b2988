@@ -1,0 +1,5 @@
+package cse.capstonedesign.Capstone.mapper;
+
+public interface MemberMapper {
+
+}

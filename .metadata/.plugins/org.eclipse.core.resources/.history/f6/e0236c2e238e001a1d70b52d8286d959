@@ -1,0 +1,30 @@
+package cse.capstonedesign.Capstone.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cse.capstonedesign.Capstone.model.Book;
+
+public class BookService {
+	private List<Book> books = new ArrayList<>();
+	private int autoIncrement = 1;
+
+	public Book saveBook(Book newBook) {
+		newBook.setId(autoIncrement++);
+		books.add(newBook);
+		return newBook;
+	}
+
+	public List<Book> getAllBooks() {
+		return books;
+	}
+
+	public Book getBookById(int bookId) {
+		for (Book book : books) {
+			if (book.getId() == bookId) {
+				return book;
+			}
+		}
+		return null;
+	}
+}

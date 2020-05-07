@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.devtools=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.mybatis=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.mysql=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.web=1
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=Capstone
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=2.2.6.RELEASE
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.description=Capstone project for Spring Boot
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.groupId=cse.capstone-design
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.javaVersion=11
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.language=java
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.name=Capstone
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packageName=cse.capstone-design.Capstone
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packaging=jar
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.type=GRADLE-Buildship 3.x
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.version=0.0.1-SNAPSHOT
+org.springframework.ide.eclipse.boot.wizard.initializr.url=https\://start.spring.io\n
