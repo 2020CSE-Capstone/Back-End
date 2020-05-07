@@ -1,4 +1,5 @@
-GitRepositoriesView.GitDirectories=
-GitRepositoriesView.GitDirectories.relative=
+GitRepositoriesView.GitDirectories=C\:\\WorkSpace\\Capstone-BackEnd\\Capstone-Server\\.git;C\:\\Users\\ParkWoongKi\\git\\Capstone-Server\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;C\:\\Users\\ParkWoongKi\\git\\Capstone-Server\\.git;
+RepositorySearchDialogSearchPath=C\:\\Users\\ParkWoongKi\\git
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
