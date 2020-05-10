@@ -1,11 +1,15 @@
 package cse.capstonedesign.Capstone.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import cse.capstonedesign.Capstone.dto.request.InsertMemberRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.UpdateMemberRequestDTO;
+import cse.capstonedesign.Capstone.dto.response.MemberDetailResponseDTO;
+import cse.capstonedesign.Capstone.dto.response.MemberSimpleResponseDTO;
 import cse.capstonedesign.Capstone.mapper.MemberMapper;
-import cse.capstonedesign.Capstone.model.Member;
 
 @Service
 public class MemberService {
@@ -16,19 +20,19 @@ public class MemberService {
 		this.memberMapper = memberMapper;
 	}
 
-	public boolean saveMember(Member newMember) {
+	public boolean saveMember(InsertMemberRequestDTO newMember) {
 		return memberMapper.insertMember(newMember) != 0;
 	}
 
-	public List<Member> getAllMembers() {
-		return memberMapper.getAllMembers();
+	public List<MemberSimpleResponseDTO> getAllMembers() {
+		return memberMapper.getAllMembers().stream().map(MemberSimpleResponseDTO::of).collect(Collectors.toList());
 	}
 
-	public Member getMemberById(int memberId) {
-		return memberMapper.getMemberById(memberId);
+	public MemberDetailResponseDTO getMemberById(int memberId) {
+		return MemberDetailResponseDTO.of(memberMapper.getMemberById(memberId));
 	}
 
-	public boolean putMember(int memberId, Member puttedMember) {
+	public boolean putMember(int memberId, UpdateMemberRequestDTO puttedMember) {
 		return memberMapper.updateMember(memberId, puttedMember) != 0;
 	}
 

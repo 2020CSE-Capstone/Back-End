@@ -7,11 +7,19 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.service.CalculatorService"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Member"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.mapper.BookMapper"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Book"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Member"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.BookSimpleResponseDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateBookRequestDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertBookRequestDTO"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="lombok.Builder"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.BookDetailResponseDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertMemberRequestDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.MemberSimpleResponseDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.MemberDetailResponseDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateMemberRequestDTO"/>
 </qualifiedTypeNameHistroy>
