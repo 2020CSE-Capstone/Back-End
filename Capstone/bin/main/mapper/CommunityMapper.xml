@@ -2,8 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cse.capstonedesign.Capstone.mapper.CommunityMapper">
-	<select id="getAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
+	<select id="getRecentAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
 		SELECT * FROM COMMUNITY ORDER BY BOARD_NO DESC;
+	</select>
+
+	<select id="getLikeAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
+		SELECT * FROM COMMUNITY ORDER BY LIKE_COUNT DESC;
+	</select>
+
+	<select id="getUserAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
+		SELECT * FROM COMMUNITY ORDER BY BOARD_NO DESC WHERE 5;
 	</select>
 
 	<select id="getWritingDetailById" resultType="cse.capstonedesign.Capstone.model.Writing"> 
