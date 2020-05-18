@@ -27,17 +27,17 @@ public class CommunityController {
 		this.communityService = communityService;
 	}
 
-	@GetMapping("")
+	@GetMapping("/recent")
 	public List<WritingSimpleResponseDTO> getRecentAllWritings() {
 		return communityService.getRecentAllWritings();
 	}
 	
-	@GetMapping("")
+	@GetMapping("/like")
 	public List<WritingSimpleResponseDTO> getLikeAllWritings() {
 		return communityService.getLikeAllWritings();
 	}
 	
-	@GetMapping("")
+	@GetMapping("/my")
 	public List<WritingSimpleResponseDTO> getUserAllWritings() {
 		return communityService.getUserAllWritings();
 	}
