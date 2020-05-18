@@ -22,16 +22,24 @@ public class CommunityService {
 		this.communityMapper = communityMapper;
 	}
 
-	public boolean insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
-		return communityMapper.insertWriting(newWriting) != 0;
+	public List<WritingSimpleResponseDTO> getRecentAllWritings() {
+		return communityMapper.getRecentAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
 	}
-
-	public List<WritingSimpleResponseDTO> getAllWritings() {
-		return communityMapper.getAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
+	
+	public List<WritingSimpleResponseDTO> getLikeAllWritings() {
+		return communityMapper.getLikeAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
+	}
+	
+	public List<WritingSimpleResponseDTO> getUserAllWritings() {
+		return communityMapper.getUserAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
 	}
 
 	public WritingDetailResponseDTO getWritingDetailById(@PathVariable("board_no") int board_no) {
 		return WritingDetailResponseDTO.of(communityMapper.getWritingDetailById(board_no));
+	}
+
+	public boolean insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
+		return communityMapper.insertWriting(newWriting) != 0;
 	}
 
 	public boolean updateWriting(@PathVariable("board_no") int board_no, @RequestBody UpdateWritingRequestDTO updated_writing) {

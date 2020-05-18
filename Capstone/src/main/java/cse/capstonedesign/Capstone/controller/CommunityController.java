@@ -27,19 +27,29 @@ public class CommunityController {
 		this.communityService = communityService;
 	}
 
-	@PostMapping("")
-	public boolean insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
-		return communityService.insertWriting(newWriting);
-	}
-
 	@GetMapping("")
-	public List<WritingSimpleResponseDTO> getAllWritings() {
-		return communityService.getAllWritings();
+	public List<WritingSimpleResponseDTO> getRecentAllWritings() {
+		return communityService.getRecentAllWritings();
+	}
+	
+	@GetMapping("")
+	public List<WritingSimpleResponseDTO> getLikeAllWritings() {
+		return communityService.getLikeAllWritings();
+	}
+	
+	@GetMapping("")
+	public List<WritingSimpleResponseDTO> getUserAllWritings() {
+		return communityService.getUserAllWritings();
 	}
 
 	@GetMapping("/{board_no}")
 	public WritingDetailResponseDTO getWritingDetailById(@PathVariable("board_no") int board_no) {
 		return communityService.getWritingDetailById(board_no);
+	}
+
+	@PostMapping("")
+	public boolean insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
+		return communityService.insertWriting(newWriting);
 	}
 
 	@PutMapping("/{board_no}")

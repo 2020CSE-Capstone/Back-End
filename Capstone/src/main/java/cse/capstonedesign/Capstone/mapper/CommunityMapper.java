@@ -11,7 +11,11 @@ import cse.capstonedesign.Capstone.model.Writing;
 
 @Mapper
 public interface CommunityMapper {
-	public List<Writing> getAllWritings();
+	public List<Writing> getRecentAllWritings();
+	
+	public List<Writing> getLikeAllWritings();
+	
+	public List<Writing> getUserAllWritings();
 
 	public Writing getWritingDetailById(@Param("board_no") int board_no);
 
