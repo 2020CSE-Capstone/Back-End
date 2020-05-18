@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.EnableAutoConfiguration"/>
     <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.service.CalculatorService"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.mapper.BookMapper"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Book"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Member"/>
@@ -19,7 +14,23 @@
     <fullyQualifiedTypeName name="lombok.Builder"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.BookDetailResponseDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertMemberRequestDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateMemberRequestDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.MemberSimpleResponseDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.MemberDetailResponseDTO"/>
-    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateMemberRequestDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.mapper.BorrowingMapper"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.service.BorrowingService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Borrowing"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="java.text.ParseException"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PatchMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
 </qualifiedTypeNameHistroy>

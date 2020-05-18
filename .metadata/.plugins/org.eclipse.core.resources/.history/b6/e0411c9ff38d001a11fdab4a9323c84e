@@ -1,6 +1,0 @@
-package cse.capstonedesign.Capstone;
-
-@RestController
-public class HelloController {
-
-}

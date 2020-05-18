@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cse.capstonedesign.Capstone.mapper.CommunityMapper">
+	<select id="getAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
+		SELECT * FROM COMMUNITY;
+	</select>
+
+	<select id="getWritingDetailById" resultType="cse.capstonedesign.Capstone.model.Writing"> 
+		SELECT * FROM COMMUNITY WHERE BOARD_NO = #{board_no};
+	</select>
+
+	<insert id="insertWriting" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Writing"> 
+		INSERT INTO COMMUNITY(TITLE, CONTENT, LIKE_COUNT, USER_ID)
+		VALUE (#{writing.title}, #{writing.content}, #{writing.like_count}, #{writing.user_id});
+	</insert>
+
+	<update id="updateWriting" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Writing">
+		UPDATE 
+			COMMUNITY 
+		SET TITLE = #{writing.title}, 
+			CONTENT = #{writing.content}
+		WHERE 
+			BOARD_NO = #{board_no};
+	</update>
+
+	<delete id="deleteWriting">
+		DELETE FROM COMMUNITY WHERE BOARD_NO = #{board_no};
+	</delete>
+</mapper>

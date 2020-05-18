@@ -1,12 +1,0 @@
-package cse.capstonedesign.Capstone.service;
-
-import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.List;
-
-public class BookService {
-	private List<Book> books = new ArrayList<>();
-	private int autoIncrement = 1;
-
-	public Book saveBook(Book newBook){        newBook.setId(autoIncrement++);        books.add(newBook);        return newBook;    }
-}
