@@ -6,8 +6,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 public class InsertWritingRequestDTO {
 	private String title;
 	private String content;
-	private int user_id;
+	private String user_id;
 }
