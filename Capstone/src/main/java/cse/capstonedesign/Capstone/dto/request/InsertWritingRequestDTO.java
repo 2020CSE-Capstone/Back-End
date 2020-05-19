@@ -10,6 +10,5 @@ import lombok.Setter;
 public class InsertWritingRequestDTO {
 	private String title;
 	private String content;
-	private String like_count;
 	private String user_id;
 }
