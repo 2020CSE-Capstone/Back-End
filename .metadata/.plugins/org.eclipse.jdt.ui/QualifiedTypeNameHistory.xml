@@ -9,9 +9,6 @@
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.BookSimpleResponseDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateBookRequestDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertBookRequestDTO"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="lombok.Builder"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.BookDetailResponseDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertMemberRequestDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateMemberRequestDTO"/>
@@ -22,7 +19,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.mapper.BorrowingMapper"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.service.BorrowingService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="java.util.List"/>
@@ -33,4 +29,12 @@
     <fullyQualifiedTypeName name="java.text.ParseException"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PatchMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.WritingSimpleResponseDTO"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Mapper"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertWritingRequestDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateWritingRequestDTO"/>
+    <fullyQualifiedTypeName name="lombok.Builder"/>
 </qualifiedTypeNameHistroy>

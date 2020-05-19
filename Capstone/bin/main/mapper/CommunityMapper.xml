@@ -11,7 +11,7 @@
 	</select>
 
 	<select id="getUserAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
-		SELECT * FROM COMMUNITY WHERE USER_ID = 5 ORDER BY BOARD_NO DESC;
+		SELECT * FROM COMMUNITY WHERE USER_ID = #{user_id} ORDER BY BOARD_NO DESC;
 	</select>
 
 	<select id="getWritingDetailById" resultType="cse.capstonedesign.Capstone.model.Writing"> 

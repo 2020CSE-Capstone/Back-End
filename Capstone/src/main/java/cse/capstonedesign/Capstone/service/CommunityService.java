@@ -30,8 +30,8 @@ public class CommunityService {
 		return communityMapper.getLikeAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
 	}
 	
-	public List<WritingSimpleResponseDTO> getUserAllWritings() {
-		return communityMapper.getUserAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
+	public List<WritingSimpleResponseDTO> getUserAllWritings(@PathVariable("user_id") int user_id) {
+		return communityMapper.getUserAllWritings(user_id).stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
 	}
 
 	public WritingDetailResponseDTO getWritingDetailById(@PathVariable("board_no") int board_no) {

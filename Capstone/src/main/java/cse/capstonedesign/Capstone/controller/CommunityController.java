@@ -37,9 +37,9 @@ public class CommunityController {
 		return communityService.getLikeAllWritings();
 	}
 	
-	@GetMapping("/my")
-	public List<WritingSimpleResponseDTO> getUserAllWritings() {
-		return communityService.getUserAllWritings();
+	@GetMapping("/mypage/{user_id}")
+	public List<WritingSimpleResponseDTO> getUserAllWritings(@PathVariable("user_id") int user_id) {
+		return communityService.getUserAllWritings(user_id);
 	}
 
 	@GetMapping("/{board_no}")
