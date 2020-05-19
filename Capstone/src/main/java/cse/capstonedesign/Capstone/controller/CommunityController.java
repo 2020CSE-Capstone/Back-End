@@ -43,8 +43,8 @@ public class CommunityController {
 	}
 
 	@GetMapping("/{board_no}")
-	public WritingDetailResponseDTO getWritingDetailById(@PathVariable("board_no") int board_no) {
-		return communityService.getWritingDetailById(board_no);
+	public WritingDetailResponseDTO getWritingDetailByNo(@PathVariable("board_no") int board_no) {
+		return communityService.getWritingDetailByNo(board_no);
 	}
 
 	@PostMapping("")

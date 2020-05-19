@@ -34,8 +34,8 @@ public class CommunityService {
 		return communityMapper.getUserAllWritings(user_id).stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
 	}
 
-	public WritingDetailResponseDTO getWritingDetailById(@PathVariable("board_no") int board_no) {
-		return WritingDetailResponseDTO.of(communityMapper.getWritingDetailById(board_no));
+	public WritingDetailResponseDTO getWritingDetailByNo(@PathVariable("board_no") int board_no) {
+		return WritingDetailResponseDTO.of(communityMapper.getWritingDetailByNo(board_no));
 	}
 
 	public boolean insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {

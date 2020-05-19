@@ -3,18 +3,18 @@
 
 <mapper namespace="cse.capstonedesign.Capstone.mapper.CommunityMapper">
 	<select id="getRecentAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
-		SELECT * FROM COMMUNITY ORDER BY BOARD_NO DESC;
+		SELECT * FROM COMMUNITY WHERE DEL_FLAG = 0 ORDER BY BOARD_NO DESC;
 	</select>
 
 	<select id="getLikeAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
-		SELECT * FROM COMMUNITY ORDER BY LIKE_COUNT DESC;
+		SELECT * FROM COMMUNITY WHERE DEL_FLAG = 0 ORDER BY LIKE_COUNT DESC;
 	</select>
 
 	<select id="getUserAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
-		SELECT * FROM COMMUNITY WHERE USER_ID = #{user_id} ORDER BY BOARD_NO DESC;
+		SELECT * FROM COMMUNITY WHERE DEL_FLAG = 0 AND USER_ID = #{user_id} ORDER BY BOARD_NO DESC;
 	</select>
 
-	<select id="getWritingDetailById" resultType="cse.capstonedesign.Capstone.model.Writing"> 
+	<select id="getWritingDetailByNo" resultType="cse.capstonedesign.Capstone.model.Writing"> 
 		SELECT * 
 		FROM COMMUNITY 
 		WHERE BOARD_NO = #{board_no};

@@ -17,7 +17,7 @@ public interface CommunityMapper {
 	
 	public List<Writing> getUserAllWritings(@Param("user_id") int user_id);
 
-	public Writing getWritingDetailById(@Param("board_no") int board_no);
+	public Writing getWritingDetailByNo(@Param("board_no") int board_no);
 
 	public int insertWriting(@Param("writing") InsertWritingRequestDTO writing);
 
