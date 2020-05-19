@@ -21,8 +21,8 @@
 	</select>
 
 	<insert id="insertWriting" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Writing"> 
-		INSERT INTO COMMUNITY(TITLE, CONTENT, LIKE_COUNT, USER_ID)
-		VALUE (#{writing.title}, #{writing.content}, #{writing.like_count}, #{writing.user_id});
+		INSERT INTO COMMUNITY(TITLE, CONTENT, USER_ID)
+		VALUE (#{writing.title}, #{writing.content}, #{writing.user_id});
 	</insert>
 
 	<update id="updateWriting" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Writing">
