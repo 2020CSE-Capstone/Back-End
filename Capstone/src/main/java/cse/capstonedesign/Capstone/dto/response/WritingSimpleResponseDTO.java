@@ -11,16 +11,16 @@ import lombok.Setter;
 @Setter
 @Builder
 public class WritingSimpleResponseDTO {
-	private String title ;
-	private String content;
+	private int board_no;
+	private String title;
 	private Date write_date;
 	private int like_count;
 	private int user_id;
 	
 	public static WritingSimpleResponseDTO of(Writing writing) {
 		return WritingSimpleResponseDTO.builder()
+				.board_no(writing.getBoard_no())
 				.title(writing.getTitle())
-				.content(writing.getContent())
 				.write_date(writing.getWrite_date())
 				.like_count(writing.getLike_count())
 				.user_id(writing.getUser_id())
