@@ -47,17 +47,19 @@
 	</select>
 
 	<insert id="insertWriting" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Writing"> 
-		INSERT INTO COMMUNITY(TITLE, CONTENT, USER_ID)
-		VALUE (#{writing.title}, #{writing.content}, #{writing.user_id});
+		INSERT INTO 
+				COMMUNITY(TITLE, CONTENT, USER_ID)
+		VALUE 
+				(#{writing.title}, #{writing.content}, #{writing.user_id});
 	</insert>
 
 	<update id="updateWriting" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Writing">
 		UPDATE 
-			COMMUNITY 
+				COMMUNITY 
 		SET TITLE = #{writing.title}, 
-			CONTENT = #{writing.content}
+				CONTENT = #{writing.content}
 		WHERE 
-			BOARD_NO = #{board_no};
+				BOARD_NO = #{board_no};
 	</update>
 
 	<delete id="deleteWriting">

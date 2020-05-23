@@ -17,4 +17,5 @@ public class Comment {
 	private Date comment_date;
 	private int user_id;
 	private int community_board_no;
+	private String nickname;
 }
