@@ -32,7 +32,7 @@ public class CommunityController {
 		return communityService.getRecentAllWritings();
 	}
 	
-	@GetMapping("/like")
+	@GetMapping("/popular")
 	public List<WritingSimpleResponseDTO> getLikeAllWritings() {
 		return communityService.getLikeAllWritings();
 	}

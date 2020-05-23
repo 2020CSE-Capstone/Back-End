@@ -16,4 +16,5 @@ public class Writing {
 	private Date write_date;
 	private int like_count;
 	private int user_id;
+	private String nickname;
 }

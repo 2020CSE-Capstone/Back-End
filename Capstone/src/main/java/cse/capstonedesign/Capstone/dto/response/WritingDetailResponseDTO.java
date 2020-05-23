@@ -17,6 +17,7 @@ public class WritingDetailResponseDTO {
 	private Date write_date;
 	private int like_count;
 	private int user_id;
+	private String nickname;
 
 	public static WritingDetailResponseDTO of(Writing writing) {
 		return WritingDetailResponseDTO.builder()
@@ -26,6 +27,7 @@ public class WritingDetailResponseDTO {
 				.write_date(writing.getWrite_date())
 				.like_count(writing.getLike_count())
 				.user_id(writing.getUser_id())
+				.nickname(writing.getNickname())
 				.build();
 	}
 }
