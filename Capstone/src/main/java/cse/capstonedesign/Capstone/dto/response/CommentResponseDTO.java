@@ -18,6 +18,7 @@ public class CommentResponseDTO {
 	private Date comment_date;
 	private int user_id;
 	private int community_board_no;
+	private String nickname;
 
 	public static CommentResponseDTO of(Comment comment) {
 		return CommentResponseDTO.builder()
@@ -28,6 +29,7 @@ public class CommentResponseDTO {
 				.comment_date(comment.getComment_date())
 				.user_id(comment.getUser_id())
 				.community_board_no(comment.getCommunity_board_no())
+				.nickname(comment.getNickname())
 				.build();
 	}
 }
