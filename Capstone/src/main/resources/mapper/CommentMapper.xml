@@ -18,4 +18,11 @@
 	<select id="getCommentCount" resultType="Integer"> 
 		SELECT COUNT(*) FROM COMMENT WHERE COMMUNITY_BOARD_NO = #{board_no};
 	</select>
+	
+	<insert id="insertComment" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Comment"> 
+		INSERT INTO 
+				COMMENT(CONTENT, USER_ID, COMMUNITY_BOARD_NO)
+		VALUE 
+				(#{comment.content}, #{comment.user_id}, #{comment.community_board_no});
+	</insert>
 </mapper>
