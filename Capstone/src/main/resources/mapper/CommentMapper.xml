@@ -14,4 +14,8 @@
 		ORDER BY 
 				PARENT_COMMENT_NO ASC, SEQ ASC;
 	</select>
+	
+	<select id="getCommentCount" resultType="Integer"> 
+		SELECT COUNT(*) FROM COMMENT WHERE COMMUNITY_BOARD_NO = #{board_no};
+	</select>
 </mapper>

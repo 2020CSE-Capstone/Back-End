@@ -17,4 +17,5 @@ public class Writing {
 	private int like_count;
 	private int user_id;
 	private String nickname;
+	private int comment_count;
 }

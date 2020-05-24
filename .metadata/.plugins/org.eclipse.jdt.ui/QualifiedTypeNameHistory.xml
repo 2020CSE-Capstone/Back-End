@@ -37,4 +37,7 @@
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertWritingRequestDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateWritingRequestDTO"/>
     <fullyQualifiedTypeName name="lombok.Builder"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Comment"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.mapper.CommentMapper"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.CommentResponseDTO"/>
 </qualifiedTypeNameHistroy>

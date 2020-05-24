@@ -17,6 +17,7 @@ public class WritingSimpleResponseDTO {
 	private int like_count;
 	private int user_id;
 	private String nickname;
+	private int comment_count;
 	
 	public static WritingSimpleResponseDTO of(Writing writing) {
 		return WritingSimpleResponseDTO.builder()
@@ -26,6 +27,7 @@ public class WritingSimpleResponseDTO {
 				.like_count(writing.getLike_count())
 				.user_id(writing.getUser_id())
 				.nickname(writing.getNickname())
+				.comment_count(writing.getComment_count())
 				.build();
 	}
 }

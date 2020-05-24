@@ -4,7 +4,14 @@
 <mapper namespace="cse.capstonedesign.Capstone.mapper.CommunityMapper">
 	<select id="getRecentAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
 		SELECT 
-				BOARD_NO, TITLE, CONTENT, WRITE_DATE, LIKE_COUNT, USER_ID, NICKNAME
+				BOARD_NO, 
+				TITLE, 
+				CONTENT, 
+				WRITE_DATE, 
+				LIKE_COUNT, 
+				USER_ID, 
+				NICKNAME, 
+				(SELECT COUNT(*) FROM COMMENT WHERE COMMUNITY_BOARD_NO = BOARD_NO) 
 		FROM 
 				COMMUNITY AS CMT LEFT JOIN USER AS USR 
 		ON 
@@ -15,7 +22,14 @@
 
 	<select id="getLikeAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
 		SELECT 
-				BOARD_NO, TITLE, CONTENT, WRITE_DATE, LIKE_COUNT, USER_ID, NICKNAME
+				BOARD_NO, 
+				TITLE, 
+				CONTENT, 
+				WRITE_DATE, 
+				LIKE_COUNT, 
+				USER_ID, 
+				NICKNAME, 
+				(SELECT COUNT(*) FROM COMMENT WHERE COMMUNITY_BOARD_NO = BOARD_NO) 
 		FROM 
 				COMMUNITY AS CMT LEFT JOIN USER AS USR 
 		ON 
@@ -26,7 +40,14 @@
 
 	<select id="getUserAllWritings" resultType="cse.capstonedesign.Capstone.model.Writing"> 
 		SELECT 
-				BOARD_NO, TITLE, CONTENT, WRITE_DATE, LIKE_COUNT, USER_ID, NICKNAME
+				BOARD_NO, 
+				TITLE, 
+				CONTENT, 
+				WRITE_DATE, 
+				LIKE_COUNT, 
+				USER_ID, 
+				NICKNAME, 
+				(SELECT COUNT(*) FROM COMMENT WHERE COMMUNITY_BOARD_NO = BOARD_NO) 
 		FROM 
 				COMMUNITY AS CMT LEFT JOIN USER AS USR 
 		ON 
@@ -37,7 +58,14 @@
 
 	<select id="getWritingDetailByNo" resultType="cse.capstonedesign.Capstone.model.Writing"> 
 		SELECT 
-				BOARD_NO, TITLE, CONTENT, WRITE_DATE, LIKE_COUNT, USER_ID, NICKNAME
+				BOARD_NO, 
+				TITLE, 
+				CONTENT, 
+				WRITE_DATE, 
+				LIKE_COUNT, 
+				USER_ID, 
+				NICKNAME, 
+				(SELECT COUNT(*) FROM COMMENT WHERE COMMUNITY_BOARD_NO = BOARD_NO) 
 		FROM 
 				COMMUNITY AS CMT LEFT JOIN USER AS USR 
 		ON 

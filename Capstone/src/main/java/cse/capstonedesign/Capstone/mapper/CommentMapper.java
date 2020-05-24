@@ -10,4 +10,6 @@ import cse.capstonedesign.Capstone.model.Comment;
 @Mapper
 public interface CommentMapper {
 	public List<Comment> getAllComments(@Param("board_no") int board_no);
+	
+	public int getCommentCount(@Param("board_no") int board_no);
 }

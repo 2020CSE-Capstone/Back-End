@@ -21,4 +21,8 @@ public class CommentService {
 	public List<CommentResponseDTO> getAllComments(@PathVariable("board_no") int board_no) {
 		return commentMapper.getAllComments(board_no).stream().map(CommentResponseDTO::of).collect(Collectors.toList());
 	}
+	
+	public int getCommentCount(@PathVariable("board_no") int board_no) {
+		return commentMapper.getCommentCount(board_no);
+	}
 }

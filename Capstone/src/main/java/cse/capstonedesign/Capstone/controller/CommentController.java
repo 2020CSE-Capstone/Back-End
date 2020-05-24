@@ -25,4 +25,9 @@ public class CommentController {
 		return commentService.getAllComments(board_no);
 	}
 
+	@GetMapping("/count/{board_no}")
+	public int getCommentCount(@PathVariable("board_no") int board_no) {
+		return commentService.getCommentCount(board_no);
+	}
+
 }
