@@ -21,8 +21,11 @@
 	
 	<insert id="insertComment" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Comment"> 
 		INSERT INTO 
-				COMMENT(CONTENT, USER_ID, COMMUNITY_BOARD_NO, PARENT_COMMENT_NO)
+				COMMENT(CONTENT, PARENT_COMMENT_NO, USER_ID, COMMUNITY_BOARD_NO)
 		VALUE 
-				(#{comment.content}, #{comment.user_id}, #{comment.community_board_no}, LAST_INSERT_ID()+1);
+				(#{comment.content}, 
+				(SELECT COMMENT_NO FROM COMMENT AS CMT ORDER BY COMMENT_NO DESC LIMIT 1) + 1, 
+				#{comment.user_id}, 
+				#{comment.community_board_no});
 	</insert>
 </mapper>
