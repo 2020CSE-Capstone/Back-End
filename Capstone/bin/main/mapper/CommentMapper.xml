@@ -23,6 +23,6 @@
 		INSERT INTO 
 				COMMENT(CONTENT, USER_ID, COMMUNITY_BOARD_NO, COMMUNITY_BOARD_NO)
 		VALUE 
-				(#{comment.content}, #{comment.user_id}, #{comment.community_board_no}, , LAST_INSERT_ID()+1);
+				(#{comment.content}, #{comment.user_id}, #{comment.community_board_no}, LAST_INSERT_ID()+1);
 	</insert>
 </mapper>
