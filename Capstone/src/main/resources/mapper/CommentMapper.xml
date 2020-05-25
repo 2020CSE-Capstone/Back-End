@@ -41,4 +41,14 @@
 				#{comment.user_id}, 
 				#{comment.community_board_no});
 	</insert>
+	
+	<insert id="insertCommentReply" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Comment"> 
+		INSERT INTO 
+				COMMENT(CONTENT, PARENT_COMMENT_NO, USER_ID, COMMUNITY_BOARD_NO)
+		VALUE 
+				(#{comment_reply.content}, 
+				#{comment_reply.parent_comment_no}, 
+				#{comment_reply.user_id}, 
+				#{comment_reply.community_board_no});
+	</insert>
 </mapper>

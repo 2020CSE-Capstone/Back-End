@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cse.capstonedesign.Capstone.dto.request.InsertCommentReplyRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.CommentResponseDTO;
 import cse.capstonedesign.Capstone.mapper.CommentMapper;
@@ -31,5 +32,9 @@ public class CommentService {
 
 	public boolean insertComment(@RequestBody InsertCommentRequestDTO newComment) {
 		return commentMapper.insertComment(newComment) != 0;
+	}
+
+	public boolean insertCommentReply(@RequestBody InsertCommentReplyRequestDTO newComment) {
+		return commentMapper.insertCommentReply(newComment) != 0;
 	}
 }

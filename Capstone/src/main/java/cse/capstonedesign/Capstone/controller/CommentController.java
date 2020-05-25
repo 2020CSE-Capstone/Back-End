@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import cse.capstonedesign.Capstone.dto.request.InsertCommentReplyRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.CommentResponseDTO;
 import cse.capstonedesign.Capstone.service.CommentService;
@@ -37,5 +38,10 @@ public class CommentController {
 	@PostMapping("")
 	public boolean insertComment(@RequestBody InsertCommentRequestDTO newComment) {
 		return commentService.insertComment(newComment);
+	}
+
+	@PostMapping("/reply")
+	public boolean insertCommentReply(@RequestBody InsertCommentReplyRequestDTO newComment) {
+		return commentService.insertCommentReply(newComment);
 	}
 }
