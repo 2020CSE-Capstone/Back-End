@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import cse.capstonedesign.Capstone.dto.request.GetCommentReplyRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO;
-import cse.capstonedesign.Capstone.dto.request.UpdateWritingRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.CommentResponseDTO;
 import cse.capstonedesign.Capstone.service.CommentService;
 
@@ -31,8 +30,8 @@ public class CommentController {
 	}
 
 	@GetMapping("/reply")
-	public List<CommentResponseDTO> getAllReplyComments(@RequestBody GetCommentReplyRequestDTO reply) {
-		return commentService.getAllReplyComments(reply);
+	public List<CommentResponseDTO> getAllReplyComments(@RequestParam("board_no") int board_no,@RequestParam("comment_no") int comment_no) {
+		return commentService.getAllReplyComments(board_no,comment_no);
 	}
 
 	@PostMapping("")

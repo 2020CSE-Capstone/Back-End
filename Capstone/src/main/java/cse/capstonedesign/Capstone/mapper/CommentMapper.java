@@ -15,7 +15,7 @@ public interface CommentMapper {
 	
 	public int getCommentCount(@Param("board_no") int board_no);
 	
-	public List<Comment> getAllReplyComments(@Param("reply") GetCommentReplyRequestDTO reply);
+	public List<Comment> getAllReplyComments(@Param("board_no") int board_no, @Param("comment_no") int comment_no);
 	
 	public int insertComment(@Param("comment") InsertCommentRequestDTO comment);
 }
