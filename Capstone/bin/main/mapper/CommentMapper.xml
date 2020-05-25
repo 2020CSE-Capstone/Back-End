@@ -23,7 +23,7 @@
 		ON 
 				CMT.USER_ID = USR.ID
 		WHERE 
-				COMMUNITY_BOARD_NO = #{all_reply_comment.board_no} AND PARENT_COMMENT_NO = #{all_reply_comment.parent_comment_no}
+				COMMUNITY_BOARD_NO = #{reply.board_no} AND PARENT_COMMENT_NO = #{reply.parent_comment_no}
 		ORDER BY 
 				PARENT_COMMENT_NO ASC, SEQ ASC;
 	</select>
