@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cse.capstonedesign.Capstone.dto.request.GetCommentReplyRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.UpdateWritingRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.CommentResponseDTO;
 import cse.capstonedesign.Capstone.service.CommentService;
 
@@ -26,6 +28,11 @@ public class CommentController {
 	@GetMapping("/{board_no}")
 	public List<CommentResponseDTO> getAllComments(@PathVariable("board_no") int board_no) {
 		return commentService.getAllComments(board_no);
+	}
+
+	@GetMapping("/reply")
+	public List<CommentResponseDTO> getAllReplyComments(@RequestBody GetCommentReplyRequestDTO reply) {
+		return commentService.getAllReplyComments(reply);
 	}
 
 	@PostMapping("")

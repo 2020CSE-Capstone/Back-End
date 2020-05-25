@@ -30,8 +30,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PatchMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.WritingSimpleResponseDTO"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Mapper"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertWritingRequestDTO"/>
@@ -40,4 +38,7 @@
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Comment"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.mapper.CommentMapper"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.CommentResponseDTO"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO"/>
 </qualifiedTypeNameHistroy>

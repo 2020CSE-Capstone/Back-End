@@ -15,6 +15,19 @@
 				PARENT_COMMENT_NO ASC, SEQ ASC;
 	</select>
 	
+	<select id="getAllReplyComments" resultType="cse.capstonedesign.Capstone.model.Comment"> 
+		SELECT 
+				COMMENT_NO, CONTENT, PARENT_COMMENT_NO, SEQ, COMMENT_DATE, USER_ID, COMMUNITY_BOARD_NO, NICKNAME 
+		FROM 
+				COMMENT AS CMT LEFT JOIN USER AS USR 
+		ON 
+				CMT.USER_ID = USR.ID
+		WHERE 
+				COMMUNITY_BOARD_NO = #{reply.board_no} AND PARENT_COMMENT_NO = #{reply.parent_comment_no}
+		ORDER BY 
+				PARENT_COMMENT_NO ASC, SEQ ASC;
+	</select>
+	
 	<select id="getCommentCount" resultType="Integer"> 
 		SELECT COUNT(*) FROM COMMENT WHERE COMMUNITY_BOARD_NO = #{board_no};
 	</select>

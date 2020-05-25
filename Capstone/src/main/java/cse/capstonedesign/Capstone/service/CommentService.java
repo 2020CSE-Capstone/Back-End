@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import cse.capstonedesign.Capstone.dto.request.GetCommentReplyRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.CommentResponseDTO;
 import cse.capstonedesign.Capstone.mapper.CommentMapper;
@@ -22,6 +23,10 @@ public class CommentService {
 
 	public List<CommentResponseDTO> getAllComments(@PathVariable("board_no") int board_no) {
 		return commentMapper.getAllComments(board_no).stream().map(CommentResponseDTO::of).collect(Collectors.toList());
+	}
+	
+	public List<CommentResponseDTO> getAllReplyComments(@RequestBody GetCommentReplyRequestDTO reply) {
+		return commentMapper.getAllReplyComments(reply).stream().map(CommentResponseDTO::of).collect(Collectors.toList());
 	}
 
 	public boolean insertComment(@RequestBody InsertCommentRequestDTO newComment) {
