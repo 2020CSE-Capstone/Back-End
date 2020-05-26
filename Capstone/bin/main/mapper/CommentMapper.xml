@@ -50,7 +50,7 @@
 				#{comment_reply.parent_comment_no}, 
 				#{comment_reply.user_id}, 
 				#{comment_reply.community_board_no},
-				(SELECT SEQ FROM COMMENT AS CMT WHERE PARENT_COMMENT_NO = 1 ORDER BY SEQ DESC LIMIT 1) + 1);
+				(SELECT SEQ FROM COMMENT AS CMT WHERE PARENT_COMMENT_NO = #{comment_reply.parent_comment_no} ORDER BY SEQ DESC LIMIT 1) + 1);
 	</insert>
 	
 	<update id="updateComment" parameterType="cse.capstonedesign.Capstone.model.Comment"> 				
