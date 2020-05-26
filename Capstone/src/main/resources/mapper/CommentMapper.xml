@@ -53,8 +53,8 @@
 				(SELECT SEQ FROM COMMENT AS CMT WHERE PARENT_COMMENT_NO = 1 ORDER BY SEQ DESC LIMIT 1) + 1);
 	</insert>
 	
-	<update id="updateComment" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Comment"> 				
-		UPDATE COMMENT SET CONTENT = "updatedComment.content" WHERE COMMENT_NO = #{comment_no};
+	<update id="updateComment" parameterType="cse.capstonedesign.Capstone.model.Comment"> 				
+		UPDATE COMMENT SET CONTENT = #{updatedComment.content} WHERE COMMENT_NO = #{comment_no};
 	</update>
 	
 </mapper>

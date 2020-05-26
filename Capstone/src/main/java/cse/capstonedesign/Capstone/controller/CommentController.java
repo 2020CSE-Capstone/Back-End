@@ -33,7 +33,7 @@ public class CommentController {
 	}
 
 	@GetMapping("/reply")
-	public List<CommentResponseDTO> getAllReplyComments(@RequestParam("board_no") int board_no,@RequestParam("comment_no") int comment_no) {
+	public List<CommentResponseDTO> getAllReplyComments(@RequestParam("board_no") int board_no, @RequestParam("comment_no") int comment_no) {
 		return commentService.getAllReplyComments(board_no,comment_no);
 	}
 
