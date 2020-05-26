@@ -9,4 +9,12 @@ import lombok.Setter;
 @Builder
 public class UpdateCommentRequestDTO {
 	private String content;
+	
+	public UpdateCommentRequestDTO() {
+		this.content = "¾øÀ½";
+	}
+	
+	public UpdateCommentRequestDTO(String content) {
+		this.content = content;
+	}
 }
