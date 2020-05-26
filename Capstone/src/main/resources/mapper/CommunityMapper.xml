@@ -71,7 +71,7 @@
 		ON 
 				CMT.USER_ID = USR.ID 
 		WHERE 
-				BOARD_NO = #{board_no};
+				BOARD_NO = #{board_no} AND DEL_FLAG = 0;
 	</select>
 
 	<insert id="insertWriting" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Writing"> 
@@ -93,6 +93,5 @@
 
 	<delete id="deleteWriting">
 		UPDATE COMMUNITY SET DEL_FLAG = 1 WHERE BOARD_NO = #{board_no};
-		
 	</delete>
 </mapper>
