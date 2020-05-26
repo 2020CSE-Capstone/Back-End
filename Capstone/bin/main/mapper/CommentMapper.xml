@@ -54,6 +54,7 @@
 	</insert>
 	
 	<update id="updateComment" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Comment"> 				
-		UPDATE COMMENT SET CONTENT = #{updated_comment.content} WHERE COMMENT_NO = #{comment_no};
+		UPDATE COMMENT SET CONTENT = "updatedComment.content" WHERE COMMENT_NO = #{comment_no};
 	</update>
+	
 </mapper>

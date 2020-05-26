@@ -93,5 +93,6 @@
 
 	<delete id="deleteWriting">
 		UPDATE COMMUNITY SET DEL_FLAG = 1 WHERE BOARD_NO = #{board_no};
+		
 	</delete>
 </mapper>
