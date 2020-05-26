@@ -41,4 +41,5 @@
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.GetCommentReplyRequestDTO"/>
 </qualifiedTypeNameHistroy>

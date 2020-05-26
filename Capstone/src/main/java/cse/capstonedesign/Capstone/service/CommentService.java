@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import cse.capstonedesign.Capstone.dto.request.InsertCommentReplyRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.UpdateCommentRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.CommentResponseDTO;
 import cse.capstonedesign.Capstone.mapper.CommentMapper;
 
@@ -36,5 +37,9 @@ public class CommentService {
 
 	public boolean insertCommentReply(@RequestBody InsertCommentReplyRequestDTO newComment) {
 		return commentMapper.insertCommentReply(newComment) != 0;
+	}
+	
+	public boolean updateComment(@PathVariable("comment_no") int comment_no, @RequestBody UpdateCommentRequestDTO updatedComment) {
+		return commentMapper.updateComment(comment_no, updatedComment) != 0;
 	}
 }

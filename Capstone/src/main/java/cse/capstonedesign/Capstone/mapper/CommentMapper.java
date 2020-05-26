@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import cse.capstonedesign.Capstone.dto.request.InsertCommentReplyRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.UpdateCommentRequestDTO;
 import cse.capstonedesign.Capstone.model.Comment;
 
 @Mapper
@@ -20,4 +21,6 @@ public interface CommentMapper {
 	public int insertComment(@Param("comment") InsertCommentRequestDTO comment);
 	
 	public int insertCommentReply(@Param("comment_reply") InsertCommentReplyRequestDTO comment_reply);
+	
+	public int updateComment(@Param("comment_no") int comment_no, @Param("updated_comment") UpdateCommentRequestDTO updated_comment);
 }
