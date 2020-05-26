@@ -47,7 +47,7 @@ public class CommentController {
 		return commentService.insertCommentReply(newComment);
 	}
 	
-	@PutMapping("/reply/{comment_no}")
+	@PutMapping("/{comment_no}")
 	public boolean updateComment(@PathVariable("comment_no") int comment_no, @RequestBody UpdateCommentRequestDTO updatedComment) {
 		return commentService.updateComment(comment_no, updatedComment);
 	}
