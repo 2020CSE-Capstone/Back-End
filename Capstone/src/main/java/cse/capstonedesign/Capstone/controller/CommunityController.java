@@ -47,22 +47,22 @@ public class CommunityController {
 	}
 
 	@GetMapping("/{board_no}")
-	public WritingDetailResponseDTO getWritingDetailByNo(@PathVariable("board_no") int board_no) {
+	public ResponseEntity getWritingDetailByNo(@PathVariable("board_no") int board_no) {
 		return communityService.getWritingDetailByNo(board_no);
 	}
 
 	@PostMapping("")
-	public boolean insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
+	public ResponseEntity insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
 		return communityService.insertWriting(newWriting);
 	}
 
 	@PutMapping("/{board_no}")
-	public boolean updateWriting(@PathVariable("board_no") int board_no, @RequestBody UpdateWritingRequestDTO updated_writing) {
+	public ResponseEntity updateWriting(@PathVariable("board_no") int board_no, @RequestBody UpdateWritingRequestDTO updated_writing) {
 		return communityService.updateWriting(board_no, updated_writing);
 	}
 
 	@DeleteMapping("/{board_no}")
-	public boolean deleteWriting(@PathVariable("board_no") int board_no) {
+	public ResponseEntity deleteWriting(@PathVariable("board_no") int board_no) {
 		return communityService.deleteWriting(board_no);
 	}
 }
