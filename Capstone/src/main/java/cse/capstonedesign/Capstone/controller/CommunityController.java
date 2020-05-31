@@ -37,14 +37,12 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/popular")
-	public ResponseEntity<List<WritingSimpleResponseDTO>> getLikeAllWritings() {
-		List<WritingSimpleResponseDTO> list = communityService.getLikeAllWritings();
-		
-		return new ResponseEntity<List<WritingSimpleResponseDTO>>(list, HttpStatus.BAD_REQUEST);
+	public ResponseEntity getLikeAllWritings() {
+		return communityService.getLikeAllWritings();
 	}
 	
 	@GetMapping("/mypage/{user_id}")
-	public List<WritingSimpleResponseDTO> getUserAllWritings(@PathVariable("user_id") int user_id) {
+	public ResponseEntity getUserAllWritings(@PathVariable("user_id") int user_id) {
 		return communityService.getUserAllWritings(user_id);
 	}
 

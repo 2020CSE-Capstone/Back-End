@@ -28,21 +28,37 @@ public class CommunityService {
 	public ResponseEntity getRecentAllWritings() {
 		Response response;
 		
-		if(communityMapper.getRecentAllWritings() != null) {
+		if(!communityMapper.getRecentAllWritings().isEmpty()) {
 			response = new Response("200", "최신 게시글 리스트 조회 성공", communityMapper.getRecentAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
 			return DefaultResponse.ok(response);
 		}else {
-			response = new Response("400", "최신 게시글 리스트 조회 실패", null);
-			return DefaultResponse.badRequest(response);
+			response = new Response("400", "최신 게시글 리스트가 존재하지 않습니다.", null);
+			return DefaultResponse.ok(response);
 		}
 	}
 	
-	public List<WritingSimpleResponseDTO> getLikeAllWritings() {
-		return communityMapper.getLikeAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
+	public ResponseEntity getLikeAllWritings() {
+		Response response;
+		
+		if(!communityMapper.getLikeAllWritings().isEmpty()) {
+			response = new Response("200", "인기 게시글 리스트 조회 성공", communityMapper.getLikeAllWritings().stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
+			return DefaultResponse.ok(response);
+		}else {
+			response = new Response("200", "인기 게시글 리스트가 존재하지 않습니다.", null);
+			return DefaultResponse.ok(response);
+		}
 	}
 	
-	public List<WritingSimpleResponseDTO> getUserAllWritings(@PathVariable("user_id") int user_id) {
-		return communityMapper.getUserAllWritings(user_id).stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList());
+	public ResponseEntity getUserAllWritings(@PathVariable("user_id") int user_id) {
+		Response response;
+		
+		if(!communityMapper.getUserAllWritings(user_id).isEmpty()) {
+			response = new Response("200", "내가 작성한 게시글 리스트 조회 성공", communityMapper.getUserAllWritings(user_id).stream().map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
+			return DefaultResponse.ok(response);
+		}else {
+			response = new Response("200", "내가 작성한 게시글 리스트가 존재하지 않습니다.", null);
+			return DefaultResponse.ok(response);
+		}
 	}
 
 	public WritingDetailResponseDTO getWritingDetailByNo(@PathVariable("board_no") int board_no) {
