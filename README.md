@@ -23,21 +23,21 @@ BASE URL : http://13.125.162.225/api/
 
 #### 1. 최신순 게시물 리스트
 
-| Method | Path    | Description                             |
-| ------ | ------- | --------------------------------------- |
-| GET    | /recent | 가장 최근에 작성된 글부터 항목 불러오기 |
+| Method | Path             | Description                             |
+| ------ | ---------------- | --------------------------------------- |
+| GET    | community/recent | 가장 최근에 작성된 글부터 항목 불러오기 |
 
 ##### Response Body
 
 ````
 {
-	"board_no" : INT
-	"title" : VARCHAR
-	"write_date" : DATETIME
-	"like_count" : INT
-	"user_id" : INT
-	"nickname" : VARCHAR
-	"comment_count" : INT
+	"board_no" : INT			// 게시글 번호
+	"title" : VARCHAR			// 제목
+	"write_date" : DATETIME		// 작성 날짜
+	"like_count" : INT			// 좋아요 개수
+	"user_id" : INT				// 유저 번호
+	"nickname" : VARCHAR		// 닉네임
+	"comment_count" : INT		// 댓글 개수
 }
 ````
 
@@ -47,21 +47,21 @@ BASE URL : http://13.125.162.225/api/
 
 #### 2. 인기순 게시물 리스트
 
-| Method | Path     | Description                                  |
-| ------ | -------- | -------------------------------------------- |
-| GET    | /popular | 좋아요를 가장 많이 받은 글부터 항목 불러오기 |
+| Method | Path              | Description                                  |
+| ------ | ----------------- | -------------------------------------------- |
+| GET    | community/popular | 좋아요를 가장 많이 받은 글부터 항목 불러오기 |
 
 ##### Response Body
 
 ````
 {
-	"board_no" : INT
-	"title" : VARCHAR
-	"write_date" : DATETIME
-	"like_count" : INT
-	"user_id" : INT
-	"nickname" : VARCHAR
-	"comment_count" : INT
+	"board_no" : INT			// 게시글 번호
+	"title" : VARCHAR			// 제목
+	"write_date" : DATETIME		// 작성 날짜
+	"like_count" : INT			// 좋아요 개수
+	"user_id" : INT				// 유저 번호
+	"nickname" : VARCHAR		// 닉네임
+	"comment_count" : INT		// 댓글 개수
 }
 ````
 
@@ -71,9 +71,9 @@ BASE URL : http://13.125.162.225/api/
 
 #### 3. 내가 작성한 게시물 리스트
 
-| Method | Path               | Description                           |
-| ------ | ------------------ | ------------------------------------- |
-| GET    | /popular/{user_id} | 내가 작성한 게시물 항목 모두 불러오기 |
+| Method | Path                        | Description                           |
+| ------ | --------------------------- | ------------------------------------- |
+| GET    | community/popular/{user_id} | 내가 작성한 게시물 항목 모두 불러오기 |
 
 ##### Request URL
 
@@ -85,13 +85,13 @@ BASE URL : http://13.125.162.225/api/
 
 ````
 {
-	"board_no" : INT
-	"title" : VARCHAR
-	"write_date" : DATETIME
-	"like_count" : INT
-	"user_id" : INT
-	"nickname" : VARCHAR
-	"comment_count" : INT
+	"board_no" : INT			// 게시글 번호
+	"title" : VARCHAR			// 제목
+	"write_date" : DATETIME		// 작성 날짜
+	"like_count" : INT			// 좋아요 개수
+	"user_id" : INT				// 유저 번호
+	"nickname" : VARCHAR		// 닉네임
+	"comment_count" : INT		// 댓글 개수
 }
 ````
 
@@ -101,28 +101,28 @@ BASE URL : http://13.125.162.225/api/
 
 #### 4. 게시글 자세히 보기
 
-| Method | Path        | Description               |
-| ------ | ----------- | ------------------------- |
-| GET    | /{board_no} | 선택한 게시글 자세히 보기 |
+| Method | Path                 | Description               |
+| ------ | -------------------- | ------------------------- |
+| GET    | community/{board_no} | 선택한 게시글 자세히 보기 |
 
 ##### Request URL
 
 ```
-"board_no" : INT
+"board_no" : INT			// 게시글 번호
 ```
 
 ##### Response Body
 
 ````
 {
-	"board_no" : INT
-	"title" : VARCHAR
-	"content" : VARCHAR
-	"write_date" : DATETIME
-	"like_count" : INT
-	"user_id" : INT
-	"nickname" : VARCHAR
-	"comment_count" : INT
+	"board_no" : INT			// 게시글 번호
+	"title" : VARCHAR			// 제목
+	"content" : VARCHAR			// 내용
+	"write_date" : DATETIME		// 작성 날짜
+	"like_count" : INT			// 좋아요 개수
+	"user_id" : INT				// 유저 번호
+	"nickname" : VARCHAR		// 닉네임
+	"comment_count" : INT		// 댓글 개수
 }
 ````
 
@@ -132,17 +132,17 @@ BASE URL : http://13.125.162.225/api/
 
 #### 5. 게시글 작성
 
-| Method | Path | Description     |
-| ------ | ---- | --------------- |
-| POST   | /    | 게시글 작성하기 |
+| Method | Path       | Description     |
+| ------ | ---------- | --------------- |
+| POST   | community/ | 게시글 작성하기 |
 
 ##### Request Body
 
 ````
 {
-	"title" : VARCHAR
-	"content" : VARCHAR
-	"user_id" : INT
+	"title" : VARCHAR			// 제목
+	"content" : VARCHAR			// 내용
+	"user_id" : INT				// 유저 번호
 }
 ````
 
@@ -161,22 +161,22 @@ false
 
 #### 6. 게시글 수정
 
-| Method | Path        | Description     |
-| ------ | ----------- | --------------- |
-| PUT    | /{board_no} | 게시글 수정하기 |
+| Method | Path                 | Description     |
+| ------ | -------------------- | --------------- |
+| PUT    | community/{board_no} | 게시글 수정하기 |
 
 ##### Request URL
 
 ```
-"board_no" : INT
+"board_no" : INT			// 게시글 번호
 ```
 
 ##### Request Body
 
 ````
 {
-	"title" : VARCHAR
-	"content" : VARCHAR
+	"title" : VARCHAR			// 제목
+	"content" : VARCHAR			// 내용
 }
 ````
 
@@ -195,14 +195,14 @@ false
 
 #### 7. 게시글 삭제
 
-| Method | Path        | Description     |
-| ------ | ----------- | --------------- |
-| DELETE | /{board_no} | 게시글 삭제하기 |
+| Method | Path                 | Description     |
+| ------ | -------------------- | --------------- |
+| DELETE | community/{board_no} | 게시글 삭제하기 |
 
 ##### Request URL
 
 ```
-"board_no" : INT
+"board_no" : INT			// 게시글 번호
 ```
 
 ##### Return
@@ -224,14 +224,14 @@ false
 
 #### 1. 댓글 리스트
 
-| Method | Path        | Description               |
-| ------ | ----------- | ------------------------- |
-| GET    | /{board_no} | 선택한 게시글 자세히 보기 |
+| Method | Path               | Description               |
+| ------ | ------------------ | ------------------------- |
+| GET    | comment/{board_no} | 선택한 게시글 자세히 보기 |
 
 ##### Request URL
 
 ```
-"board_no" : INT
+"board_no" : INT			// 게시글 번호
 ```
 
 ##### Response Body
@@ -255,9 +255,9 @@ false
 
 #### 2. 부모 댓글에 대한 대댓글 리스트
 
-| Method | Path   | Description                                             |
-| ------ | ------ | ------------------------------------------------------- |
-| GET    | /reply | 선택한 댓글의 부모 댓글을 포함한 대댓글 리스트 불러오기 |
+| Method | Path          | Description                                             |
+| ------ | ------------- | ------------------------------------------------------- |
+| GET    | comment/reply | 선택한 댓글의 부모 댓글을 포함한 대댓글 리스트 불러오기 |
 
 ##### Request URL
 
@@ -286,9 +286,9 @@ false
 
 #### 3. 댓글 작성
 
-| Method | Path | Description   |
-| ------ | ---- | ------------- |
-| POST   | /    | 댓글 작성하기 |
+| Method | Path     | Description   |
+| ------ | -------- | ------------- |
+| POST   | comment/ | 댓글 작성하기 |
 
 ##### Request Body
 
@@ -315,9 +315,9 @@ false
 
 #### 4. 대댓글 작성
 
-| Method | Path   | Description     |
-| ------ | ------ | --------------- |
-| POST   | /reply | 대댓글 작성하기 |
+| Method | Path          | Description     |
+| ------ | ------------- | --------------- |
+| POST   | comment/reply | 대댓글 작성하기 |
 
 ##### Request Body
 
@@ -345,9 +345,9 @@ false
 
 #### 5. 댓글 수정
 
-| Method | Path          | Description   |
-| ------ | ------------- | ------------- |
-| PUT    | /{comment_no} | 댓글 수정하기 |
+| Method | Path                 | Description   |
+| ------ | -------------------- | ------------- |
+| PUT    | comment/{comment_no} | 댓글 수정하기 |
 
 ##### Request URL
 
