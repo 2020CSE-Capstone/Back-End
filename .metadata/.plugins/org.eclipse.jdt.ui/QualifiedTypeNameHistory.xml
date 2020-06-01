@@ -21,7 +21,6 @@
     <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.service.BorrowingService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Borrowing"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
@@ -34,13 +33,18 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Mapper"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertWritingRequestDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateWritingRequestDTO"/>
-    <fullyQualifiedTypeName name="lombok.Builder"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Comment"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.mapper.CommentMapper"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.CommentResponseDTO"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertCommentRequestDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.GetCommentReplyRequestDTO"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.UpdateCommentRequestDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.client.DefaultResponseErrorHandler"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.Builder"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.model.Response"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.DefaultResponse"/>
 </qualifiedTypeNameHistroy>

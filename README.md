@@ -31,13 +31,29 @@ BASE URL : http://13.125.162.225/api/
 
 ````
 {
-	"board_no" : INT			// 게시글 번호
-	"title" : VARCHAR			// 제목
-	"write_date" : DATETIME		// 작성 날짜
-	"like_count" : INT			// 좋아요 개수
-	"user_id" : INT				// 유저 번호
-	"nickname" : VARCHAR		// 닉네임
-	"comment_count" : INT		// 댓글 개수
+    "status": "200",
+    "message": "최신 게시글 리스트 조회 성공",
+    "data": [
+        {
+            "board_no" : INT			// 게시글 번호
+            "title" : VARCHAR			// 제목
+            "write_date" : DATETIME		// 작성 날짜
+            "like_count" : INT			// 좋아요 개수
+            "user_id" : INT				// 유저 번호
+            "nickname" : VARCHAR		// 닉네임
+            "comment_count" : INT		// 댓글 개수
+        },
+        {
+            "board_no" : INT			// 게시글 번호
+            "title" : VARCHAR			// 제목
+            "write_date" : DATETIME		// 작성 날짜
+            "like_count" : INT			// 좋아요 개수
+            "user_id" : INT				// 유저 번호
+            "nickname" : VARCHAR		// 닉네임
+            "comment_count" : INT		// 댓글 개수
+        }
+        ...
+    ]
 }
 ````
 
@@ -55,13 +71,29 @@ BASE URL : http://13.125.162.225/api/
 
 ````
 {
-	"board_no" : INT			// 게시글 번호
-	"title" : VARCHAR			// 제목
-	"write_date" : DATETIME		// 작성 날짜
-	"like_count" : INT			// 좋아요 개수
-	"user_id" : INT				// 유저 번호
-	"nickname" : VARCHAR		// 닉네임
-	"comment_count" : INT		// 댓글 개수
+    "status": "200",
+    "message": "인기 게시글 리스트 조회 성공",
+    "data": [
+        {
+            "board_no" : INT			// 게시글 번호
+            "title" : VARCHAR			// 제목
+            "write_date" : DATETIME		// 작성 날짜
+            "like_count" : INT			// 좋아요 개수
+            "user_id" : INT				// 유저 번호
+            "nickname" : VARCHAR		// 닉네임
+            "comment_count" : INT		// 댓글 개수
+        },
+        {
+            "board_no" : INT			// 게시글 번호
+            "title" : VARCHAR			// 제목
+            "write_date" : DATETIME		// 작성 날짜
+            "like_count" : INT			// 좋아요 개수
+            "user_id" : INT				// 유저 번호
+            "nickname" : VARCHAR		// 닉네임
+            "comment_count" : INT		// 댓글 개수
+        }
+        ...
+    ]
 }
 ````
 
@@ -85,13 +117,29 @@ BASE URL : http://13.125.162.225/api/
 
 ````
 {
-	"board_no" : INT			// 게시글 번호
-	"title" : VARCHAR			// 제목
-	"write_date" : DATETIME		// 작성 날짜
-	"like_count" : INT			// 좋아요 개수
-	"user_id" : INT				// 유저 번호
-	"nickname" : VARCHAR		// 닉네임
-	"comment_count" : INT		// 댓글 개수
+    "status": "200",
+    "message": "내가 작성한 게시글 리스트 조회 성공",
+    "data": [
+        {
+            "board_no" : INT			// 게시글 번호
+            "title" : VARCHAR			// 제목
+            "write_date" : DATETIME		// 작성 날짜
+            "like_count" : INT			// 좋아요 개수
+            "user_id" : INT				// 유저 번호
+            "nickname" : VARCHAR		// 닉네임
+            "comment_count" : INT		// 댓글 개수
+        },
+        {
+            "board_no" : INT			// 게시글 번호
+            "title" : VARCHAR			// 제목
+            "write_date" : DATETIME		// 작성 날짜
+            "like_count" : INT			// 좋아요 개수
+            "user_id" : INT				// 유저 번호
+            "nickname" : VARCHAR		// 닉네임
+            "comment_count" : INT		// 댓글 개수
+        }
+        ...
+    ]
 }
 ````
 
@@ -115,14 +163,18 @@ BASE URL : http://13.125.162.225/api/
 
 ````
 {
-	"board_no" : INT			// 게시글 번호
-	"title" : VARCHAR			// 제목
-	"content" : VARCHAR			// 내용
-	"write_date" : DATETIME		// 작성 날짜
-	"like_count" : INT			// 좋아요 개수
-	"user_id" : INT				// 유저 번호
-	"nickname" : VARCHAR		// 닉네임
-	"comment_count" : INT		// 댓글 개수
+    "status": "200",
+    "message": "최신 게시글 리스트 조회 성공",
+    "data": {
+        "board_no" : INT			// 게시글 번호
+        "title" : VARCHAR			// 제목
+        "content" : VARCHAR			// 내용
+        "write_date" : DATETIME		// 작성 날짜
+        "like_count" : INT			// 좋아요 개수
+        "user_id" : INT				// 유저 번호
+        "nickname" : VARCHAR		// 닉네임
+        "comment_count" : INT		// 댓글 개수
+    }
 }
 ````
 
@@ -146,13 +198,21 @@ BASE URL : http://13.125.162.225/api/
 }
 ````
 
-##### Return
+##### Response Body
 
 ```
 // 성공 시
-true
+{
+    "status": "200",
+    "message": "게시글 삽입 성공",
+    "data": true
+}
 // 실패 시
-false
+{
+    "status": "400",
+    "message": "게시글 삽입 실패",
+    "data": false
+}
 ```
 
 <br/>
@@ -180,13 +240,21 @@ false
 }
 ````
 
-##### Return
+##### Response Body
 
 ```
 // 성공 시
-true
+{
+    "status": "200",
+    "message": "게시글 수정 성공",
+    "data": true
+}
 // 실패 시
-false
+{
+    "status": "400",
+    "message": "게시글 수정 실패",
+    "data": false
+}
 ```
 
 <br/>
@@ -205,13 +273,21 @@ false
 "board_no" : INT			// 게시글 번호
 ```
 
-##### Return
+##### Response Body
 
 ```
 // 성공 시
-true
+{
+    "status": "200",
+    "message": "게시글 삭제 성공",
+    "data": true
+}
 // 실패 시
-false
+{
+    "status": "400",
+    "message": "게시글 삭제 실패",
+    "data": false
+}
 ```
 
 <br/>

@@ -2,6 +2,7 @@ package cse.capstonedesign.Capstone.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,27 +29,27 @@ public class CommentController {
 	}
 
 	@GetMapping("/{board_no}")
-	public List<CommentResponseDTO> getAllComments(@PathVariable("board_no") int board_no) {
+	public ResponseEntity getAllComments(@PathVariable("board_no") int board_no) {
 		return commentService.getAllComments(board_no);
 	}
 
 	@GetMapping("/reply")
-	public List<CommentResponseDTO> getAllReplyComments(@RequestParam("board_no") int board_no, @RequestParam("comment_no") int comment_no) {
+	public ResponseEntity getAllReplyComments(@RequestParam("board_no") int board_no, @RequestParam("comment_no") int comment_no) {
 		return commentService.getAllReplyComments(board_no,comment_no);
 	}
 
 	@PostMapping("")
-	public boolean insertComment(@RequestBody InsertCommentRequestDTO newComment) {
+	public ResponseEntity insertComment(@RequestBody InsertCommentRequestDTO newComment) {
 		return commentService.insertComment(newComment);
 	}
 
 	@PostMapping("/reply")
-	public boolean insertCommentReply(@RequestBody InsertCommentReplyRequestDTO newComment) {
+	public ResponseEntity insertCommentReply(@RequestBody InsertCommentReplyRequestDTO newComment) {
 		return commentService.insertCommentReply(newComment);
 	}
 	
 	@PutMapping("/{comment_no}")
-	public boolean updateComment(@PathVariable("comment_no") int comment_no, @RequestBody UpdateCommentRequestDTO updatedComment) {
+	public ResponseEntity updateComment(@PathVariable("comment_no") int comment_no, @RequestBody UpdateCommentRequestDTO updatedComment) {
 		return commentService.updateComment(comment_no, updatedComment);
 	}
 }

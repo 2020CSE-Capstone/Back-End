@@ -29,11 +29,11 @@ public class CommunityService {
 		Response response;
 
 		if (!communityMapper.getRecentAllWritings().isEmpty()) {
-			response = new Response("200", "ÃÖ½Å °Ô½Ã±Û ¸®½ºÆ® Á¶È¸ ¼º°ø", communityMapper.getRecentAllWritings().stream()
+			response = new Response("200", "ìµœì‹  ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ ì„±ê³µ", communityMapper.getRecentAllWritings().stream()
 					.map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
 			return DefaultResponse.ok(response);
 		} else {
-			response = new Response("400", "ÃÖ½Å °Ô½Ã±Û ¸®½ºÆ®°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.", null);
+			response = new Response("200", "ìµœì‹  ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.", null);
 			return DefaultResponse.ok(response);
 		}
 	}
@@ -42,11 +42,11 @@ public class CommunityService {
 		Response response;
 
 		if (!communityMapper.getLikeAllWritings().isEmpty()) {
-			response = new Response("200", "ÀÎ±â °Ô½Ã±Û ¸®½ºÆ® Á¶È¸ ¼º°ø", communityMapper.getLikeAllWritings().stream()
+			response = new Response("200", "ì¸ê¸° ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ ì„±ê³µ", communityMapper.getLikeAllWritings().stream()
 					.map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
 			return DefaultResponse.ok(response);
 		} else {
-			response = new Response("200", "ÀÎ±â °Ô½Ã±Û ¸®½ºÆ®°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.", null);
+			response = new Response("200", "ì¸ê¸° ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.", null);
 			return DefaultResponse.ok(response);
 		}
 	}
@@ -55,53 +55,60 @@ public class CommunityService {
 		Response response;
 
 		if (!communityMapper.getUserAllWritings(user_id).isEmpty()) {
-			response = new Response("200", "³»°¡ ÀÛ¼ºÇÑ °Ô½Ã±Û ¸®½ºÆ® Á¶È¸ ¼º°ø", communityMapper.getUserAllWritings(user_id).stream()
+			response = new Response("200", "ë‚´ê°€ ì‘ì„±í•œ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ ì„±ê³µ", communityMapper.getUserAllWritings(user_id).stream()
 					.map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
 			return DefaultResponse.ok(response);
 		} else {
-			response = new Response("200", "³»°¡ ÀÛ¼ºÇÑ °Ô½Ã±Û ¸®½ºÆ®°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.", null);
+			response = new Response("200", "ë‚´ê°€ ì‘ì„±í•œ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.", null);
 			return DefaultResponse.ok(response);
 		}
 	}
 
 	public ResponseEntity getWritingDetailByNo(@PathVariable("board_no") int board_no) {
-		Response response = new Response("200", "°Ô½Ã±Û ºÒ·¯¿À±â ¼º°ø",
-				WritingDetailResponseDTO.of(communityMapper.getWritingDetailByNo(board_no)));
-		return DefaultResponse.ok(response);
-	}
-
-	public ResponseEntity insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
 		Response response;
-		
-		if (communityMapper.insertWriting(newWriting) != 0) {
-			response = new Response("200", "°Ô½Ã±Û »ğÀÔ ¼º°ø", true);
+
+		if (!communityMapper.getWritingDetailByNo(board_no).getTitle().isEmpty()) {
+			response = new Response("200", "ê²Œì‹œê¸€ ìƒì„¸íˆ ë³´ê¸° ì„±ê³µ", WritingDetailResponseDTO.of(communityMapper.getWritingDetailByNo(board_no)));
 			return DefaultResponse.ok(response);
 		} else {
-			response = new Response("400", "°Ô½Ã±Û »ğÀÔ ½ÇÆĞ", false);
+			response = new Response("400", "ê²Œì‹œê¸€ ìƒì„¸íˆ ë³´ê¸° ì‹¤íŒ¨", null);
 			return DefaultResponse.badRequest(response);
 		}
 	}
 
-	public ResponseEntity updateWriting(@PathVariable("board_no") int board_no, @RequestBody UpdateWritingRequestDTO updated_writing) {
+	public ResponseEntity insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
 		Response response;
-		
-		if (communityMapper.updateWriting(board_no, updated_writing) != 0) {
-			response = new Response("200", "°Ô½Ã±Û ¼öÁ¤ ¼º°ø", true);
+
+		if (communityMapper.insertWriting(newWriting) != 0) {
+			response = new Response("200", "ê²Œì‹œê¸€ ì‚½ì… ì„±ê³µ", true);
 			return DefaultResponse.ok(response);
 		} else {
-			response = new Response("400", "°Ô½Ã±Û ¼öÁ¤ ½ÇÆĞ", false);
+			response = new Response("400", "ê²Œì‹œê¸€ ì‚½ì… ì‹¤íŒ¨", false);
+			return DefaultResponse.badRequest(response);
+		}
+	}
+
+	public ResponseEntity updateWriting(@PathVariable("board_no") int board_no,
+			@RequestBody UpdateWritingRequestDTO updated_writing) {
+		Response response;
+
+		if (communityMapper.updateWriting(board_no, updated_writing) != 0) {
+			response = new Response("200", "ê²Œì‹œê¸€ ìˆ˜ì • ì„±ê³µ", true);
+			return DefaultResponse.ok(response);
+		} else {
+			response = new Response("400", "ê²Œì‹œê¸€ ìˆ˜ì • ì‹¤íŒ¨", false);
 			return DefaultResponse.badRequest(response);
 		}
 	}
 
 	public ResponseEntity deleteWriting(@PathVariable("board_no") int board_no) {
 		Response response;
-		
+
 		if (communityMapper.deleteWriting(board_no) != 0) {
-			response = new Response("200", "°Ô½Ã±Û »èÁ¦ ¼º°ø", true);
+			response = new Response("200", "ê²Œì‹œê¸€ ì‚­ì œ ì„±ê³µ", true);
 			return DefaultResponse.ok(response);
 		} else {
-			response = new Response("400", "°Ô½Ã±Û »èÁ¦ ½ÇÆĞ", false);
+			response = new Response("400", "ê²Œì‹œê¸€ ì‚­ì œ ì‹¤íŒ¨", false);
 			return DefaultResponse.badRequest(response);
 		}
 	}
