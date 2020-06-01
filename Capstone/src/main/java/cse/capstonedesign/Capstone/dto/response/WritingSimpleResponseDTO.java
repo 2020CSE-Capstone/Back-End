@@ -2,6 +2,8 @@ package cse.capstonedesign.Capstone.dto.response;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import cse.capstonedesign.Capstone.model.Writing;
 import lombok.Builder;
 import lombok.Getter;
