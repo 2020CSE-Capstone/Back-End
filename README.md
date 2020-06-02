@@ -37,7 +37,7 @@ BASE URL : http://13.125.162.225/api/
         {
             "board_no" : INT			// 게시글 번호
             "title" : VARCHAR			// 제목
-            "write_date" : DATETIME		// 작성 날짜
+            "write_date" : VARCHAR		// 작성 날짜
             "like_count" : INT			// 좋아요 개수
             "user_id" : INT				// 유저 번호
             "nickname" : VARCHAR		// 닉네임
@@ -46,7 +46,7 @@ BASE URL : http://13.125.162.225/api/
         {
             "board_no" : INT			// 게시글 번호
             "title" : VARCHAR			// 제목
-            "write_date" : DATETIME		// 작성 날짜
+            "write_date" : VARCHAR		// 작성 날짜
             "like_count" : INT			// 좋아요 개수
             "user_id" : INT				// 유저 번호
             "nickname" : VARCHAR		// 닉네임
@@ -77,7 +77,7 @@ BASE URL : http://13.125.162.225/api/
         {
             "board_no" : INT			// 게시글 번호
             "title" : VARCHAR			// 제목
-            "write_date" : DATETIME		// 작성 날짜
+            "write_date" : VARCHAR		// 작성 날짜
             "like_count" : INT			// 좋아요 개수
             "user_id" : INT				// 유저 번호
             "nickname" : VARCHAR		// 닉네임
@@ -86,7 +86,7 @@ BASE URL : http://13.125.162.225/api/
         {
             "board_no" : INT			// 게시글 번호
             "title" : VARCHAR			// 제목
-            "write_date" : DATETIME		// 작성 날짜
+            "write_date" : VARCHAR		// 작성 날짜
             "like_count" : INT			// 좋아요 개수
             "user_id" : INT				// 유저 번호
             "nickname" : VARCHAR		// 닉네임
@@ -123,7 +123,7 @@ BASE URL : http://13.125.162.225/api/
         {
             "board_no" : INT			// 게시글 번호
             "title" : VARCHAR			// 제목
-            "write_date" : DATETIME		// 작성 날짜
+            "write_date" : VARCHAR		// 작성 날짜
             "like_count" : INT			// 좋아요 개수
             "user_id" : INT				// 유저 번호
             "nickname" : VARCHAR		// 닉네임
@@ -132,7 +132,7 @@ BASE URL : http://13.125.162.225/api/
         {
             "board_no" : INT			// 게시글 번호
             "title" : VARCHAR			// 제목
-            "write_date" : DATETIME		// 작성 날짜
+            "write_date" : VARCHAR		// 작성 날짜
             "like_count" : INT			// 좋아요 개수
             "user_id" : INT				// 유저 번호
             "nickname" : VARCHAR		// 닉네임
@@ -169,7 +169,7 @@ BASE URL : http://13.125.162.225/api/
         "board_no" : INT			// 게시글 번호
         "title" : VARCHAR			// 제목
         "content" : VARCHAR			// 내용
-        "write_date" : DATETIME		// 작성 날짜
+        "write_date" : VARCHAR		// 작성 날짜
         "like_count" : INT			// 좋아요 개수
         "user_id" : INT				// 유저 번호
         "nickname" : VARCHAR		// 닉네임
@@ -314,14 +314,31 @@ BASE URL : http://13.125.162.225/api/
 
 ````
 {
-	"comment_no" : INT
-	"content" : VARCHAR
-	"parent_comment_no" : INT
-	"seq" : INT
-	"comment_date" : DATETIME
-	"user_id" : INT
-	"community_board_no" : INT
-	"nickname" : VARCHAR
+    "status": "200",
+    "message": "댓글 리스트 조회 성공",
+    "data": [
+        {
+            "comment_no" : INT			// 댓글 번호
+            "content" : VARCHAR			// 내용
+            "parent_comment_no" : INT	// 부모 댓글 번호
+            "seq" : INT					// 부모 댓글에 대한 대댓글 순서 (부모 : 1)
+            "comment_date" : VARCHAR	// 작성 날짜
+            "user_id" : INT				// 유저 번호
+            "community_board_no" : INT	// 커뮤니티 게시글 번호
+            "nickname" : VARCHAR		// 닉네임
+        },
+        {
+            "comment_no" : INT			// 댓글 번호
+            "content" : VARCHAR			// 내용
+            "parent_comment_no" : INT	// 부모 댓글 번호
+            "seq" : INT					// 부모 댓글에 대한 대댓글 순서 (부모 : 1)
+            "comment_date" : VARCHAR	// 작성 날짜
+            "user_id" : INT				// 유저 번호
+            "community_board_no" : INT	// 커뮤니티 게시글 번호
+            "nickname" : VARCHAR		// 닉네임
+        }
+        ...
+    ]
 }
 ````
 
@@ -345,14 +362,31 @@ BASE URL : http://13.125.162.225/api/
 
 ````
 {
-	"comment_no" : INT
-	"content" : VARCHAR
-	"parent_comment_no" : INT
-	"seq" : INT
-	"comment_date" : DATETIME
-	"user_id" : INT
-	"community_board_no" : INT
-	"nickname" : VARCHAR
+    "status": "200",
+    "message": "대댓글 리스트 조회 성공",
+    "data": [
+        {
+            "comment_no" : INT			// 댓글 번호
+            "content" : VARCHAR			// 내용
+            "parent_comment_no" : INT	// 부모 댓글 번호
+            "seq" : INT					// 부모 댓글에 대한 대댓글 순서 (부모 : 1)
+            "comment_date" : VARCHAR	// 작성 날짜
+            "user_id" : INT				// 유저 번호
+            "community_board_no" : INT	// 커뮤니티 게시글 번호
+            "nickname" : VARCHAR		// 닉네임
+        },
+        {
+            "comment_no" : INT			// 댓글 번호
+            "content" : VARCHAR			// 내용
+            "parent_comment_no" : INT	// 부모 댓글 번호
+            "seq" : INT					// 부모 댓글에 대한 대댓글 순서 (부모 : 1)
+            "comment_date" : VARCHAR	// 작성 날짜
+            "user_id" : INT				// 유저 번호
+            "community_board_no" : INT	// 커뮤니티 게시글 번호
+            "nickname" : VARCHAR		// 닉네임
+        }
+        ...
+    ]
 }
 ````
 
@@ -380,9 +414,17 @@ BASE URL : http://13.125.162.225/api/
 
 ```
 // 성공 시
-true
+{
+    "status": "200",
+    "message": "댓글 삽입 성공",
+    "data": true
+}
 // 실패 시
-false
+{
+    "status": "400",
+    "message": "댓글 삽입 실패",
+    "data": false
+}
 ```
 
 <br/>
@@ -410,9 +452,17 @@ false
 
 ```
 // 성공 시
-true
+{
+    "status": "200",
+    "message": "대댓글 삽입 성공",
+    "data": true
+}
 // 실패 시
-false
+{
+    "status": "400",
+    "message": "대댓글 삽입 실패",
+    "data": false
+}
 ```
 
 <br/>
@@ -443,9 +493,17 @@ false
 
 ```
 // 성공 시
-true
+{
+    "status": "200",
+    "message": "댓글 수정 성공",
+    "data": true
+}
 // 실패 시
-false
+{
+    "status": "400",
+    "message": "댓글 수정 실패",
+    "data": false
+}
 ```
 
 <br/>

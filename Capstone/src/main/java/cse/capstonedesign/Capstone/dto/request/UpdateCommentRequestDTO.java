@@ -11,7 +11,7 @@ public class UpdateCommentRequestDTO {
 	private String content;
 	
 	public UpdateCommentRequestDTO() {
-		this.content = "¾øÀ½";
+		this.content = "null";
 	}
 	
 	public UpdateCommentRequestDTO(String content) {

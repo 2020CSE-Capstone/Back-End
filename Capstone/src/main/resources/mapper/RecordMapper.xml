@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cse.capstonedesign.Capstone.mapper.RecordMapper">
+	<select id="getAllDrinkRecords" resultType="cse.capstonedesign.Capstone.model.Record"> 
+		SELECT 
+				ID, FIGURE, GLASS, DRINK_DATE, DRINK_KIND_DRINK_NAME, USER_ID
+		FROM
+				DRINK_RECORD
+		WHERE 
+				USER_ID = #{user_id};
+	</select>
+
+	<insert id="insertDrinkRecord" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Record"> 
+		INSERT INTO 
+				DRINK_RECORD(FIGURE, GLASS, DRINK_DATE, DRINK_KIND_DRINK_NAME, USER_ID)
+		VALUE 
+				(#{record.figure}, #{record.glass}, #{record.drink_date}, #{record.drink_name}, #{record.user_id});
+	</insert>
+	
+</mapper>
