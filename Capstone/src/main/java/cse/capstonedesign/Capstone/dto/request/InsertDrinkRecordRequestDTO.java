@@ -1,7 +1,5 @@
 package cse.capstonedesign.Capstone.dto.request;
 
-import java.util.Date;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

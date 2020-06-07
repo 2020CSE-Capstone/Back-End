@@ -28,7 +28,6 @@
     <fullyQualifiedTypeName name="java.text.ParseException"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PatchMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.WritingSimpleResponseDTO"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Mapper"/>
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertWritingRequestDTO"/>
@@ -49,4 +48,9 @@
     <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.DefaultResponse"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.service.RecordService"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.response.RecordResponseDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertRecordRequestDTO"/>
+    <fullyQualifiedTypeName name="cse.capstonedesign.Capstone.dto.request.InsertDrinkRecordRequestDTO"/>
 </qualifiedTypeNameHistroy>
