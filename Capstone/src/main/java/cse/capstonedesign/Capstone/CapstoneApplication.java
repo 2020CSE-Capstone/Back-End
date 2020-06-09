@@ -3,6 +3,7 @@ package cse.capstonedesign.Capstone;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -31,7 +32,7 @@ public class CapstoneApplication implements Jackson2ObjectMapperBuilderCustomize
 
 		CustomOffsetDateTimeSerializer offsetSerializer = new CustomOffsetDateTimeSerializer(formatter2);
 
-		builder.simpleDateFormat("yyyy-MM-dd HH:mm:ss").serializerByType(LocalDateTime.class, localSerializer)
+		builder.simpleDateFormat("yyyy-MM-dd HH:mm:ss").serializerByType(LocalDateTime.class, localSerializer).timeZone(TimeZone.getTimeZone("Asia/Seoul"))
 				.serializerByType(OffsetDateTime.class, offsetSerializer);
 	}
 

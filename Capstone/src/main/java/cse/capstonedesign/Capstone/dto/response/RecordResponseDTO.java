@@ -16,7 +16,6 @@ public class RecordResponseDTO {
 	private int glass;
 	private String drink_date;
 	private String drink_name;
-	private int user_id;
 
 	public static RecordResponseDTO of(Record record) {
 		return RecordResponseDTO.builder()
@@ -25,7 +24,6 @@ public class RecordResponseDTO {
 				.glass(record.getGlass())
 				.drink_date(record.getDrink_date())
 				.drink_name(record.getDrink_name())
-				.user_id(record.getUser_id())
 				.build();
 	}
 }
