@@ -18,6 +18,15 @@
 				EMAIL = #{email};
 	</select>
 
+	<select id="findIdByEmail" resultType="int"> 
+		SELECT 
+				ID
+		FROM 
+				USER 
+		WHERE 
+				EMAIL = #{email};
+	</select>
+
 	<insert id="insertUser" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.User"> 
 		INSERT INTO 
 				USER(EMAIL, NICKNAME, AGE, DRINK_AVERAGE, SMOKE_AVERAGE, PASSWORD, DETERMINATION)

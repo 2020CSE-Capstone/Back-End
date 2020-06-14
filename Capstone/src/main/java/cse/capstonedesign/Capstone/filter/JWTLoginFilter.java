@@ -9,12 +9,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties.Jwt;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -22,8 +24,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cse.capstonedesign.Capstone.dto.request.LoginRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.UserPrincipal;
+import cse.capstonedesign.Capstone.mapper.UserMapper;
 import cse.capstonedesign.Capstone.model.User;
 import cse.capstonedesign.Capstone.properties.JwtProperties;
+import lombok.RequiredArgsConstructor;
 
 public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -70,10 +74,14 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 	@Override
 	protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
+		String email = ((UserPrincipal) auth.getPrincipal()).getUsername();
+		int id = ((UserPrincipal) auth.getPrincipal()).getUserId();
+		System.out.println(email+ ", id : "+ id);
 
 		System.out.println("succesfulAuthen 진입 : 로그인 성공");
 		String token = JWT.create()
 				.withSubject(((UserPrincipal) auth.getPrincipal()).getUsername())
+				.withClaim("id", ((UserPrincipal) auth.getPrincipal()).getUserId())
 				.withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
 				.sign(Algorithm.HMAC512(JwtProperties.SECRET.getBytes()));
 		res.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);

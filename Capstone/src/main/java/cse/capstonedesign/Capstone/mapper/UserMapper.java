@@ -13,7 +13,9 @@ public interface UserMapper {
 
 	public List<User> getAllUsers();
 	
-    public User findByEmail(@Param("email") String email);
+	public User findByEmail(@Param("email") String email);
+
+	public int findIdByEmail(@Param("email") String email);
 
 	public int insertUser(@Param("user") SignUpRequestDTO user);
 }
