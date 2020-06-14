@@ -10,7 +10,10 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.OffsetDateTimeSerializer;
@@ -35,6 +38,11 @@ public class CapstoneApplication implements Jackson2ObjectMapperBuilderCustomize
 		builder.simpleDateFormat("yyyy-MM-dd HH:mm:ss").serializerByType(LocalDateTime.class, localSerializer).timeZone(TimeZone.getTimeZone("Asia/Seoul"))
 				.serializerByType(OffsetDateTime.class, offsetSerializer);
 	}
+	
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 	public class CustomOffsetDateTimeSerializer extends OffsetDateTimeSerializer {
 		public CustomOffsetDateTimeSerializer(DateTimeFormatter formatter) {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cse.capstonedesign.Capstone.mapper.UserMapper">
+	<select id="getAllUsers" resultType="cse.capstonedesign.Capstone.model.User"> 
+		SELECT 
+				ID, EMAIL, NICKNAME, AGE, DRINK_AVERAGE, SMOKE_AVERAGE, PASSWORD, DETERMINATION, ROLES 
+		FROM 
+				USER;
+	</select>
+
+	<select id="findByEmail" resultType="cse.capstonedesign.Capstone.model.User"> 
+		SELECT 
+				ID, EMAIL, NICKNAME, AGE, DRINK_AVERAGE, SMOKE_AVERAGE, PASSWORD, DETERMINATION, ROLES
+		FROM 
+				USER 
+		WHERE 
+				EMAIL = #{email};
+	</select>
+
+	<insert id="insertUser" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.User"> 
+		INSERT INTO 
+				USER(EMAIL, NICKNAME, AGE, DRINK_AVERAGE, SMOKE_AVERAGE, PASSWORD, DETERMINATION)
+		VALUE 
+				(#{user.email}, #{user.nickname}, #{user.age}, #{user.drink_average}, #{user.smoke_average}, #{user.password}, #{user.determination});
+	</insert>
+	
+</mapper>
