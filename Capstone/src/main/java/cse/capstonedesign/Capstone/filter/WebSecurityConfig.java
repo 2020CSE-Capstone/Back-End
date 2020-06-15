@@ -95,7 +95,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 				.authorizeRequests()
 				.antMatchers("/api/login").permitAll()
-//				.antMatchers("/login").permitAll()
+				.antMatchers("/login").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/user/signup").permitAll()
 //        
 //        .antMatchers("/index.html").permitAll() // antMatchers( ) : 해당 location과 일치하는 resource에 대한 접근 허용유무를 정의합니다.
