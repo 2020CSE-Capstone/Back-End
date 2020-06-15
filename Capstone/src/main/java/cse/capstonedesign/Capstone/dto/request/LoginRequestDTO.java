@@ -16,7 +16,6 @@ public class LoginRequestDTO {
 	}
 
 	public LoginRequestDTO(String email, String password) {
-		super();
 		this.email = email;
 		this.password = password;
 	}

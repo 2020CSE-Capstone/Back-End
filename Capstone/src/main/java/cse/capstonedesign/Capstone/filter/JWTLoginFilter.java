@@ -50,7 +50,8 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 //			System.out.println("로그인 인증 실패");
 //			throw new RuntimeException(e);
 //		}
-		System.out.println("로그 왜 안찍히냐");
+		
+		System.out.println("--------------");
 		LoginRequestDTO credentials = null;
         try {
             credentials = new ObjectMapper().readValue(request.getInputStream(), LoginRequestDTO.class);

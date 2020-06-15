@@ -6,20 +6,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cse.capstonedesign.Capstone.dto.request.LoginRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.SignUpRequestDTO;
-import cse.capstonedesign.Capstone.model.User;
+import cse.capstonedesign.Capstone.service.UserPrincipalDetailsService;
 import cse.capstonedesign.Capstone.service.UserService;
 
 @RestController
-@RequestMapping("api/user")
-public class UserController {
+@RequestMapping("login")
+public class LoginController{
 
     @Autowired
-    UserService userService;
-
-    @PostMapping(value = "/signup")
-    public SignUpRequestDTO signup(@RequestBody SignUpRequestDTO user) {
-        user = userService.signup(user);
-        return user;
-    }
+    UserPrincipalDetailsService userPrincipalDetailsService;
+//
+//    @PostMapping(value = "/")
+//    public LoginRequestDTO login(@RequestBody LoginRequestDTO login) {
+//        user = userPrincipalDetailsService.loadUserByUsername(login.getEmail());
+//        return user;
+//    }
 }

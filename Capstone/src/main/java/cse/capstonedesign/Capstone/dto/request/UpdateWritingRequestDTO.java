@@ -10,4 +10,13 @@ import lombok.Setter;
 public class UpdateWritingRequestDTO {
 	private String title;
 	private String content;
+	
+	public UpdateWritingRequestDTO() {
+
+	}
+
+	public UpdateWritingRequestDTO(String title, String content) {
+		this.title = title;
+		this.content = content;
+	}
 }
