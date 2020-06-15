@@ -25,29 +25,37 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.slf4j.Slf4j;
+
 //@Order(SecurityProperties.DEFAULT_FILTER_ORDER)
+@Slf4j
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserDetailsService userDetailsService;
+	private final UserDetailsService userDetailsService;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final ObjectMapper objectMapper;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+	public WebSecurityConfig(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder,
+			ObjectMapper objectMapper) {
+		this.objectMapper = new ObjectMapper();
+		this.userDetailsService = userDetailsService;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
 
-    public WebSecurityConfig(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userDetailsService = userDetailsService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
-    
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth/* .authenticationProvider(authenticationProvider()) */
-			.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+				.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 //			.and()
 //        	.inMemoryAuthentication() // inMemoryAuthentication( ) : user와 password 정보를 h2와 같은 in memory에 저장합니다.
 //        	// dndrl1515 user의 password를 minholee93으로 설정하고, 해당 1234를 password encoder로 encode합니다. 또한, dndrl1515의 ROLE을 ADMIN으로 설정합니다.
@@ -55,23 +63,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        	.and()
 //			.withUser("manager").password(bCryptPasswordEncoder.encode("1234")).roles("MANAGER")
 //			.and();
-    }
-    
+	}
+
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
 //    }
-  
 
 //    @Override
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 //    }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-        		.cors().and()
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.cors().and()
+		.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //        		.csrf().disable()
 //                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //                .and()
@@ -81,34 +88,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated()
 //                .and()
 //                
-        .cors()
-        .and()
-        .addFilter(new JWTLoginFilter(authenticationManager()))
-        .addFilter(new JWTAuthenticationFilter2(authenticationManager()))
-        
-        
-        
-        .authorizeRequests()
-        .antMatchers(HttpMethod.POST, "/login").permitAll()
-        .antMatchers(HttpMethod.POST, "/api/user/signup").permitAll()
+				.and()
+//				.addFilter(new JWTLoginFilter(authenticationManager()))
+				.addFilterAt(getAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+				.addFilter(new JWTAuthenticationFilter2(authenticationManager()))
+
+				.authorizeRequests()
+				.antMatchers("/api/login").permitAll()
+//				.antMatchers("/login").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/user/signup").permitAll()
 //        
 //        .antMatchers("/index.html").permitAll() // antMatchers( ) : 해당 location과 일치하는 resource에 대한 접근 허용유무를 정의합니다.
 //			// permitAll( ) : 모든 임의의 사용자들의 접근을 허용합니다. 로그인하지 않은 사용자도 접근할 수 있습니다.
-		.antMatchers("/profile/**").authenticated() // authenticated( ) : 로그인한 모든 사용자의 접근을 허용합니다.
-		.antMatchers("/admin/**").hasRole("ADMIN") // hasRole( ) : 로그인한 사용자 중 해당 ROLE을 가진 사용자만 접근을 허용합니다.
-		.antMatchers("/api/public/users").hasRole("ADMIN")
-		.antMatchers("/manager/**").hasAnyRole("ADMIN","MANAGER") // hasAnyRole( ) : 로그인한 사용자 중 선언된 ROLE 중 하나이상의 ROLE을 가지고 있는 사용자만 접근을 허용합니다.
-        
-        .anyRequest().authenticated()
-        .and()
+				.antMatchers("/profile/**").authenticated() // authenticated( ) : 로그인한 모든 사용자의 접근을 허용합니다.
+				.antMatchers("/admin/**").hasRole("ADMIN") // hasRole( ) : 로그인한 사용자 중 해당 ROLE을 가진 사용자만 접근을 허용합니다.
+				.antMatchers("/api/public/users").hasRole("ADMIN").antMatchers("/manager/**")
+				.hasAnyRole("ADMIN", "MANAGER") // hasAnyRole( ) : 로그인한 사용자 중 선언된 ROLE 중 하나이상의 ROLE을 가지고 있는 사용자만 접근을
+												// 허용합니다.
+
+				.anyRequest().authenticated().and()
 //                .addFilter(new JWTLoginFilter(authenticationManager()))
 //                .addFilter(new JWTAuthenticationFilter2(authenticationManager()))
 //                .exceptionHandling()
 //                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 //                .httpBasic()
-        	.formLogin().disable()
-        
-        
+				.formLogin().disable()
 //        .and()
 //        .formLogin()
 //        .loginProcessingUrl("/login") //the URL on which the clients should post the login information
@@ -126,49 +130,56 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        .and()
 //        .exceptionHandling() //default response if the client wants to get a resource unauthorized
 //        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-        		
+
 //        		.and()
-        		
-        		.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        		.and()
-//                .oauth2ResourceServer().jwt();
+;
+	}
+
+	protected CustomUserPasswordAuthenticationFilter getAuthenticationFilter() {
+    	CustomUserPasswordAuthenticationFilter authFilter = new CustomUserPasswordAuthenticationFilter();
+    	
+    	try {
+    		authFilter.setFilterProcessesUrl("/api/login");
+    		authFilter.setAuthenticationManager(this.authenticationManagerBean());
+    		authFilter.setUsernameParameter("email");
+    		authFilter.setPasswordParameter("password");
+//    		authFilter.setAuthenticationSuccessHandler("");
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return authFilter;
     }
-    
-    @Bean
-    public DaoAuthenticationProvider authProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(bCryptPasswordEncoder);
-        return authProvider;
-    }
-    
-//    private void loginSuccessHandler(
-//            HttpServletRequest request,
-//            HttpServletResponse response,
-//            Authentication authentication) throws IOException {
-//     
-//            response.setStatus(HttpStatus.OK.value());
-//            objectMapper.writeValue(response.getWriter(), "Yayy you logged in!");
-//        }
-//     
-//        private void loginFailureHandler(
-//            HttpServletRequest request,
-//            HttpServletResponse response,
-//            AuthenticationException e) throws IOException {
-//     
-//            response.setStatus(HttpStatus.UNAUTHORIZED.value());
-//            objectMapper.writeValue(response.getWriter(), "Nopity nop!");
-//        }
-//     
-//        private void logoutSuccessHandler(
-//            HttpServletRequest request,
-//            HttpServletResponse response,
-//            Authentication authentication) throws IOException {
-//     
-//            response.setStatus(HttpStatus.OK.value());
-//            objectMapper.writeValue(response.getWriter(), "Bye!");
-//        }
-    
+
+	@Bean
+	public DaoAuthenticationProvider authProvider() {
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+		authProvider.setUserDetailsService(userDetailsService);
+		authProvider.setPasswordEncoder(bCryptPasswordEncoder);
+		return authProvider;
+	}
+
+	private void loginSuccessHandler(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws IOException {
+
+		response.setStatus(HttpStatus.OK.value());
+		objectMapper.writeValue(response.getWriter(), "Login Successed");
+	}
+
+	private void loginFailureHandler(HttpServletRequest request, HttpServletResponse response,
+			AuthenticationException e) throws IOException {
+
+		response.setStatus(HttpStatus.UNAUTHORIZED.value());
+		objectMapper.writeValue(response.getWriter(), "Login Failured");
+	}
+
+	private void logoutSuccessHandler(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws IOException {
+
+		response.setStatus(HttpStatus.OK.value());
+		objectMapper.writeValue(response.getWriter(), "Bye!");
+	}
+
 //    @Bean
 //    public CorsConfigurationSource corsConfigurationSource() {
 //        CorsConfiguration configuration = new CorsConfiguration();
@@ -182,7 +193,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        source.registerCorsConfiguration("/**", configuration);
 //        return (CorsConfigurationSource) source;
 //    }
-
 
 //    @Bean
 //    CorsConfigurationSource corsConfigurationSource() {
