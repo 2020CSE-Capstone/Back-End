@@ -51,6 +51,14 @@ BASE URL : http://13.125.162.225/api/
   [1 음주 측정값 리스트](#1-음주-측정값-리스트)
 
   [2 음주 측정값 저장](#2-음주-측정값-저장)
+  
+  <br/>
+  
++ 유저 API
+
+  [1 로그인](#1-로그인)
+
+  [2 회원가입](#2-회원가입)
 
 ---
 
@@ -660,6 +668,98 @@ BASE URL : http://13.125.162.225/api/
 {
     "status": "400",
     "message": "기록 삽입 실패",
+    "data": false
+}
+```
+
+<br/>
+
+<br/>
+
+<br/>
+
+# 유저 API
+
+<br/>
+
+## 1 로그인
+
+[목차로 이동](#목차)
+
+| Method | Path        | Description |
+| ------ | ----------- | ----------- |
+| POST   | user/login/ | 로그인 하기 |
+
+##### Test ID
+
+```
+"email" : admin
+"password" : 1234
+```
+
+##### Request URL
+
+```
+{
+	"email" : String			// 측정값
+	"password" : String			// 잔 수
+}
+```
+
+##### Response Header
+
+```
+// 로그인 성공 시 토큰 발급
+Authorization: token
+```
+
+##### Response Body
+
+```
+{
+    "status": "200",
+    "message": "기록 리스트 조회 성공",
+    "data": true
+} 
+```
+
+<br/><br/>
+
+## 2 회원가입
+
+[목차로 이동](#목차)
+
+| Method | Path        | Description |
+| ------ | ----------- | ----------- |
+| POST   | user/signup | 회원가입    |
+
+##### Request Body
+
+```
+{
+    "email": VARCHAR
+    "nickname": VARCHAR
+	"age": INT
+	"drink_average": INT
+	"smoke_average": INT
+	"password": VARCHAR
+	"determination": VARCHAR
+}
+```
+
+##### Response Body
+
+```
+// 성공 시
+{
+    "status": "200",
+    "message": "회원가입 성공",
+    "data": true
+}
+// 실패 시
+{
+    "status": "400",
+    "message": "회원가입 실패",
     "data": false
 }
 ```

@@ -39,11 +39,11 @@ public class CapstoneApplication implements Jackson2ObjectMapperBuilderCustomize
 				.serializerByType(OffsetDateTime.class, offsetSerializer);
 	}
 	
-    @Bean
+	@Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+	
 	public class CustomOffsetDateTimeSerializer extends OffsetDateTimeSerializer {
 		public CustomOffsetDateTimeSerializer(DateTimeFormatter formatter) {
 			super(OffsetDateTimeSerializer.INSTANCE, false, formatter);

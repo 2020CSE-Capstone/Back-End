@@ -27,7 +27,7 @@
 				EMAIL = #{email};
 	</select>
 
-	<insert id="insertUser" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.User"> 
+	<insert id="signup" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.User"> 
 		INSERT INTO 
 				USER(EMAIL, NICKNAME, AGE, DRINK_AVERAGE, SMOKE_AVERAGE, PASSWORD, DETERMINATION)
 		VALUE 

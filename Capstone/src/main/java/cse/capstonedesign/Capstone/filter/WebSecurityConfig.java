@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 					.authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/api/user/login/").permitAll()
-					.antMatchers(HttpMethod.POST, "/api/user/signup/").permitAll()
+					.antMatchers(HttpMethod.POST, "/api/user/signup").permitAll()
 					.antMatchers("/login").permitAll()
 					.antMatchers("/profile/**").authenticated() // authenticated( ) : 로그인한 모든 사용자의 접근을 허용합니다.
 					.antMatchers("/admin/**").hasRole("ADMIN") // hasRole( ) : 로그인한 사용자 중 해당 ROLE을 가진 사용자만 접근을 허용합니다.

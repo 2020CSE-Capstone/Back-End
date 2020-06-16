@@ -1,14 +1,16 @@
 package cse.capstonedesign.Capstone.service;
 
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cse.capstonedesign.Capstone.dto.request.SignUpRequestDTO;
+import cse.capstonedesign.Capstone.dto.response.DefaultResponse;
 import cse.capstonedesign.Capstone.mapper.UserMapper;
+import cse.capstonedesign.Capstone.model.Response;
 import cse.capstonedesign.Capstone.model.User;
 
 @Service
@@ -28,9 +30,17 @@ public class UserService {
     	return userMapper.findByEmail(email);
     }
 
-    public SignUpRequestDTO signup(SignUpRequestDTO user) {
+    public ResponseEntity signup(@RequestBody SignUpRequestDTO user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userMapper.insertUser(user);
-        return user;
+        
+        Response response;
+
+		if (userMapper.signup(user) != 0) {
+			response = new Response("200", "회원가입 성공", true);
+			return DefaultResponse.ok(response);
+		} else {
+			response = new Response("400", "회원가입 실패", false);
+			return DefaultResponse.badRequest(response);
+		}
     }
 }

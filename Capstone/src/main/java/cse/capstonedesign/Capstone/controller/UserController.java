@@ -1,7 +1,6 @@
 package cse.capstonedesign.Capstone.controller;
 
 import java.util.Date;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,8 +19,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
 import cse.capstonedesign.Capstone.dto.request.LoginRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.SignUpRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.DefaultResponse;
-import cse.capstonedesign.Capstone.dto.response.WritingSimpleResponseDTO;
 import cse.capstonedesign.Capstone.model.Response;
 import cse.capstonedesign.Capstone.properties.JwtProperties;
 import cse.capstonedesign.Capstone.service.UserService;
@@ -60,4 +59,9 @@ public class UserController {
 		
 		return DefaultResponse.ok(new Response("200", "로그인 성공", true));
 	}
+	
+	@PostMapping("/signup")
+    public ResponseEntity signup(@RequestBody SignUpRequestDTO user) {
+        return userService.signup(user);
+    }
 }
