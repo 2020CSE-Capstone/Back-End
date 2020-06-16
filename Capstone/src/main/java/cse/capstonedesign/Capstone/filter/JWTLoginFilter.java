@@ -28,7 +28,9 @@ import cse.capstonedesign.Capstone.mapper.UserMapper;
 import cse.capstonedesign.Capstone.model.User;
 import cse.capstonedesign.Capstone.properties.JwtProperties;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 
 	private AuthenticationManager authenticationManager;
@@ -43,7 +45,7 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 //		try {
 //			LoginRequestDTO user = new ObjectMapper().readValue(request.getInputStream(), LoginRequestDTO.class);
 //
-//			System.out.println(user.getEmail() + user.getPassword()+ "로그인 인증 성공");
+//			System.out.println(user.getEmail() + user.getPasauthenticationTokensword()+ "로그인 인증 성공");
 //			return authenticationManager.authenticate(
 //					new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), new ArrayList<>()));
 //		} catch (IOException e) {
@@ -51,11 +53,11 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 //			throw new RuntimeException(e);
 //		}
 		
-		System.out.println("--------------");
+		log.info("----------------------------");
 		LoginRequestDTO credentials = null;
         try {
             credentials = new ObjectMapper().readValue(request.getInputStream(), LoginRequestDTO.class);
-        	System.out.println(credentials.getEmail() + credentials.getPassword()+ "로그인 인증 성공");
+    		log.info("[attemptAuthentication] email : {}, password: **** ", credentials.getEmail());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,6 +71,7 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 
         // Authenticate user
         Authentication auth = authenticationManager.authenticate(authenticationToken);
+        
         return auth;
 	}
 
@@ -77,9 +80,8 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 			Authentication auth) throws IOException, ServletException {
 		String email = ((UserPrincipal) auth.getPrincipal()).getUsername();
 		int id = ((UserPrincipal) auth.getPrincipal()).getUserId();
-		System.out.println(email+ ", id : "+ id);
+		log.info("[successfulAuthentication] email : {}, password: **** ", ((UserPrincipal) auth.getPrincipal()).getUsername());
 
-		System.out.println("succesfulAuthen 진입 : 로그인 성공");
 		String token = JWT.create()
 				.withSubject(((UserPrincipal) auth.getPrincipal()).getUsername())
 				.withClaim("id", ((UserPrincipal) auth.getPrincipal()).getUserId())

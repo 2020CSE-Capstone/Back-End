@@ -1,8 +1,5 @@
 package cse.capstonedesign.Capstone.controller;
 
-import java.util.List;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cse.capstonedesign.Capstone.dto.request.InsertWritingRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.UpdateWritingRequestDTO;
-import cse.capstonedesign.Capstone.dto.response.DefaultResponse;
-import cse.capstonedesign.Capstone.dto.response.WritingDetailResponseDTO;
-import cse.capstonedesign.Capstone.dto.response.WritingSimpleResponseDTO;
-import cse.capstonedesign.Capstone.model.Response;
 import cse.capstonedesign.Capstone.service.CommunityService;
 
 @RestController

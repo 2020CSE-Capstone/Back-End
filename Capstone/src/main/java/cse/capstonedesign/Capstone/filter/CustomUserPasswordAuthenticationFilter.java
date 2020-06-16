@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -71,7 +72,7 @@ public class CustomUserPasswordAuthenticationFilter extends UsernamePasswordAuth
 		String username = obtainUsername(request);
 		String password = obtainPassword(request);
 
-		log.info("[LOGIN_REQUEST] email : {}, password: ***** ", username);
+		log.info("[LOGIN_REQUEST] email : {}, password: ****", username);
 
 		if (username == null) {
 			username = "";

@@ -11,10 +11,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import cse.capstonedesign.Capstone.dto.request.UserPrincipal;
+import cse.capstonedesign.Capstone.filter.CustomUserPasswordAuthenticationFilter;
 import cse.capstonedesign.Capstone.mapper.UserMapper;
 import cse.capstonedesign.Capstone.model.User;
-import cse.capstonedesign.Capstone.model.UserLogin;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class UserPrincipalDetailsService implements UserDetailsService {
 
@@ -30,13 +32,8 @@ public class UserPrincipalDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = this.userMapper.findByEmail(email);
 		UserPrincipal userPrincipal = new UserPrincipal(user);
-		System.out.println(user.getEmail() + " " + user.getPassword() + ": Detail 가져옴");
-		System.out.println(userPrincipal.getUsername() + " " + userPrincipal.getPassword() + ": Detail 가져옴");
-
-//        if(user != null) {
-//        	user.setAuthorities(makeGrantedAuthority(userPrincipal.getAuthorities());
-//        }
-//        return new SecurityMember(member);
+		
+		log.info("[loadUserByUsername] email : {}, password: **** ", user.getEmail());
 		
 		return userPrincipal;
 	}
