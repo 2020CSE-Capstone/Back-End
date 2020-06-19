@@ -15,7 +15,9 @@ public interface CommunityMapper {
 	
 	public List<Writing> getLikeAllWritings();
 	
-	public List<Writing> getUserAllWritings(@Param("user_id") int user_id);
+	public List<Writing> getUserAllWritings(@Param("user_id") int user_id);	
+	
+	public List<Writing> getSearchWritings(@Param("key_word") String key_word);
 
 	public Writing getWritingDetailByNo(@Param("board_no") int board_no);
 

@@ -25,14 +25,18 @@ public class RecordService {
 	public ResponseEntity getAllDrinkRecords(@PathVariable("user_id") int user_id) {
 		Response response;
 
-		if (!recordMapper.getAllDrinkRecords(user_id).isEmpty()) {
-			response = new Response("200", "기록 리스트 조회 성공", recordMapper.getAllDrinkRecords(user_id).stream()
-					.map(RecordResponseDTO::of).collect(Collectors.toList()));
-			return DefaultResponse.ok(response);
-		} else {
-			response = new Response("200", "기록 리스트가 존재하지 않습니다.", null);
-			return DefaultResponse.ok(response);
-		}
+		response = new Response("200", "기록 리스트 조회 성공", recordMapper.getAllDrinkRecords(user_id).stream()
+				.map(RecordResponseDTO::of).collect(Collectors.toList()));
+		return DefaultResponse.ok(response);
+
+	}
+
+	public ResponseEntity getAllSmokeRecords(@PathVariable("user_id") int user_id) {
+		Response response;
+
+		response = new Response("200", "기록 리스트 조회 성공", recordMapper.getAllSmokeRecords(user_id).stream()
+				.map(RecordResponseDTO::of).collect(Collectors.toList()));
+		return DefaultResponse.ok(response);
 	}
 
 	public ResponseEntity insertDrinkRecord(@RequestBody InsertDrinkRecordRequestDTO new_record) {

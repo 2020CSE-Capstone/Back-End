@@ -2,11 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cse.capstonedesign.Capstone.mapper.RecordMapper">
+
 	<select id="getAllDrinkRecords" resultType="cse.capstonedesign.Capstone.model.Record"> 
 		SELECT 
 				ID, FIGURE, GLASS, DRINK_DATE, DRINK_KIND_DRINK_NAME, USER_ID
 		FROM
 				DRINK_RECORD
+		WHERE 
+				USER_ID = #{user_id};
+	</select>
+
+	<select id="getAllSmokeRecords" resultType="cse.capstonedesign.Capstone.model.Record"> 
+		SELECT 
+				ID, FIGURE, PIECE, SMOKE_DATE, SMOKE_KIND_SMOKE_NAME, USER_ID
+		FROM
+				SMOKE_RECORD
 		WHERE 
 				USER_ID = #{user_id};
 	</select>

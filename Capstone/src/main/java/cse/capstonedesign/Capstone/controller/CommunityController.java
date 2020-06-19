@@ -38,6 +38,11 @@ public class CommunityController {
 	public ResponseEntity getUserAllWritings(@PathVariable("user_id") int user_id) {
 		return communityService.getUserAllWritings(user_id);
 	}
+	
+	@GetMapping("/search/{key_word}")
+	public ResponseEntity getSearchWritings(@PathVariable("key_word") String key_word) {
+		return communityService.getSearchWritings(key_word);
+	}
 
 	@GetMapping("/{board_no}")
 	public ResponseEntity getWritingDetailByNo(@PathVariable("board_no") int board_no) {

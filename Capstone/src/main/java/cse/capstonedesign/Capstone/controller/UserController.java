@@ -36,7 +36,7 @@ public class UserController {
 	UserService userService;
 
 	@PostMapping("/login")
-	public ResponseEntity login(@RequestBody LoginRequestDTO login, HttpServletResponse header) {
+	public ResponseEntity login(@RequestBody LoginRequestDTO login) {
 		String email = login.getEmail();
 		String password = login.getPassword();
 
@@ -49,15 +49,19 @@ public class UserController {
 		
 		// email로 id 가져오기. 토큰에 넣을 거임
 		int user_id = userService.findIdByEmail(email);
+//		System.out.println(user_id);
 
 		// 토큰 생성
-		String token = JWT.create().withSubject(email).withClaim("id", user_id)
+		String token = JWT.create()
+				.withSubject(email)
+				.withClaim("id", user_id)
 				.withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
 				.sign(Algorithm.HMAC512(JwtProperties.SECRET.getBytes()));
-
-		header.setHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + token);
 		
-		return DefaultResponse.ok(new Response("200", "로그인 성공", true));
+//		res.setHeader("Authorization", JwtProperties.TOKEN_PREFIX + token);
+//		System.out.println(JwtProperties.TOKEN_PREFIX + token);
+//		return JwtProperties.TOKEN_PREFIX + token;
+		return DefaultResponse.ok(new Response("200", "로그인 성공", JwtProperties.TOKEN_PREFIX + token));
 	}
 	
 	@PostMapping("/signup")

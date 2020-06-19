@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) 
 				.and()
 					.authorizeRequests()
-					.antMatchers(HttpMethod.POST, "/api/user/login/").permitAll()
+					.antMatchers(HttpMethod.POST, "/api/user/login").permitAll()
 					.antMatchers(HttpMethod.POST, "/api/user/signup").permitAll()
 					.antMatchers("/login").permitAll()
 					.antMatchers("/profile/**").authenticated() // authenticated( ) : 로그인한 모든 사용자의 접근을 허용합니다.
@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.anyRequest().authenticated()
 				.and()
 					.addFilter(new JWTLoginFilter(authenticationManager()))
-					.addFilterAt(getAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+//					.addFilterAt(getAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 					.addFilter(new JWTAuthenticationFilter2(authenticationManager()));
 	}
 

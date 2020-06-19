@@ -12,6 +12,8 @@ import cse.capstonedesign.Capstone.model.Record;
 public interface RecordMapper {
 
 	public List<Record> getAllDrinkRecords(@Param("user_id") int user_id);
+	
+	public List<Record> getAllSmokeRecords(@Param("user_id") int user_id);
 
 	public int insertDrinkRecord(@Param("record") InsertDrinkRecordRequestDTO record);
 

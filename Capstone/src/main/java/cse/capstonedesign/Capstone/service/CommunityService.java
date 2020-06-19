@@ -41,34 +41,34 @@ public class CommunityService {
 	public ResponseEntity getLikeAllWritings() {
 		Response response;
 
-		if (!communityMapper.getLikeAllWritings().isEmpty()) {
-			response = new Response("200", "인기 게시글 리스트 조회 성공", communityMapper.getLikeAllWritings().stream()
-					.map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
-			return DefaultResponse.ok(response);
-		} else {
-			response = new Response("200", "인기 게시글 리스트가 존재하지 않습니다.", null);
-			return DefaultResponse.ok(response);
-		}
+		response = new Response("200", "인기 게시글 리스트 조회 성공", communityMapper.getLikeAllWritings().stream()
+				.map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
+		return DefaultResponse.ok(response);
+
 	}
 
 	public ResponseEntity getUserAllWritings(@PathVariable("user_id") int user_id) {
 		Response response;
 
-		if (!communityMapper.getUserAllWritings(user_id).isEmpty()) {
-			response = new Response("200", "내가 작성한 게시글 리스트 조회 성공", communityMapper.getUserAllWritings(user_id).stream()
-					.map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
-			return DefaultResponse.ok(response);
-		} else {
-			response = new Response("200", "내가 작성한 게시글 리스트가 존재하지 않습니다.", null);
-			return DefaultResponse.ok(response);
-		}
+		response = new Response("200", "내가 작성한 게시글 리스트 조회 성공", communityMapper.getUserAllWritings(user_id).stream()
+				.map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
+		return DefaultResponse.ok(response);
+	}
+
+	public ResponseEntity getSearchWritings(@PathVariable("key_word") String key_word) {
+		Response response;
+
+		response = new Response("200", "검색 리스트 조회 성공", communityMapper.getSearchWritings(key_word).stream()
+				.map(WritingSimpleResponseDTO::of).collect(Collectors.toList()));
+		return DefaultResponse.ok(response);
 	}
 
 	public ResponseEntity getWritingDetailByNo(@PathVariable("board_no") int board_no) {
 		Response response;
 
 		if (!communityMapper.getWritingDetailByNo(board_no).getTitle().isEmpty()) {
-			response = new Response("200", "게시글 상세히 보기 성공", WritingDetailResponseDTO.of(communityMapper.getWritingDetailByNo(board_no)));
+			response = new Response("200", "게시글 상세히 보기 성공",
+					WritingDetailResponseDTO.of(communityMapper.getWritingDetailByNo(board_no)));
 			return DefaultResponse.ok(response);
 		} else {
 			response = new Response("400", "게시글 상세히 보기 실패", null);

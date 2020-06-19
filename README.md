@@ -686,9 +686,9 @@ BASE URL : http://13.125.162.225/api/
 
 [목차로 이동](#목차)
 
-| Method | Path        | Description |
-| ------ | ----------- | ----------- |
-| POST   | user/login/ | 로그인 하기 |
+| Method | Path       | Description |
+| ------ | ---------- | ----------- |
+| POST   | user/login | 로그인 하기 |
 
 ##### Test ID
 
@@ -706,20 +706,13 @@ BASE URL : http://13.125.162.225/api/
 }
 ```
 
-##### Response Header
-
-```
-// 로그인 성공 시 토큰 발급
-Authorization: token
-```
-
 ##### Response Body
 
 ```
 {
     "status": "200",
     "message": "기록 리스트 조회 성공",
-    "data": true
+    "data": token
 } 
 ```
 
@@ -737,13 +730,13 @@ Authorization: token
 
 ```
 {
-    "email": VARCHAR
-    "nickname": VARCHAR
-	"age": INT
-	"drink_average": INT
-	"smoke_average": INT
-	"password": VARCHAR
-	"determination": VARCHAR
+	"email": VARCHAR			// 이메일
+	"nickname": VARCHAR			// 닉네임
+	"age": INT					// 나이
+	"drink_average": INT		// 평균 주량
+	"smoke_average": INT		// 평균 흡연량
+	"password": VARCHAR			// 비밀번호
+	"determination": VARCHAR	// 나의 의지
 }
 ```
 

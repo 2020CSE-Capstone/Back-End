@@ -97,7 +97,7 @@ public class CustomUserPasswordAuthenticationFilter extends UsernamePasswordAuth
 		int id = ((UserPrincipal) auth.getPrincipal()).getUserId();
 		System.out.println(email+ ", id : "+ id);
 
-		System.out.println("succesfulAuthen 진입 : 로그인 성공");
+		System.out.println("CUSTOM succesfulAuthen 진입 : 로그인 성공");
 		String token = JWT.create()
 				.withSubject(((UserPrincipal) auth.getPrincipal()).getUsername())
 				.withClaim("id", ((UserPrincipal) auth.getPrincipal()).getUserId())

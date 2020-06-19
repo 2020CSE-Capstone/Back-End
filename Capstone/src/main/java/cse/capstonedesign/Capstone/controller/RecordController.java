@@ -21,9 +21,14 @@ public class RecordController {
 		this.recordService = recordService;
 	}
 
-	@GetMapping("/{user_id}")
+	@GetMapping("/drink/{user_id}")
 	public ResponseEntity getAllDrinkRecords(@PathVariable("user_id") int user_id) {
 		return recordService.getAllDrinkRecords(user_id);
+	}
+
+	@GetMapping("/smoke/{user_id}")
+	public ResponseEntity getAllSmokeRecords(@PathVariable("user_id") int user_id) {
+		return recordService.getAllSmokeRecords(user_id);
 	}
 	
 	@PostMapping("")

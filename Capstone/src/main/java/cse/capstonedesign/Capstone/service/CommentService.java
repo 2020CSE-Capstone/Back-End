@@ -28,30 +28,21 @@ public class CommentService {
 	public ResponseEntity getAllComments(@PathVariable("board_no") int board_no) {
 		Response response;
 
-		if (!commentMapper.getAllComments(board_no).isEmpty()) {
-			response = new Response("200", "댓글 리스트 조회 성공", commentMapper.getAllComments(board_no).stream()
-					.map(CommentResponseDTO::of).collect(Collectors.toList()));
-			return DefaultResponse.ok(response);
-		} else {
-			response = new Response("200", "댓글 리스트가 존재하지 않습니다.", null);
-			return DefaultResponse.ok(response);
-		}
-		
+		response = new Response("200", "댓글 리스트 조회 성공", commentMapper.getAllComments(board_no).stream()
+				.map(CommentResponseDTO::of).collect(Collectors.toList()));
+		return DefaultResponse.ok(response);
+
 //		return commentMapper.getAllComments(board_no).stream().map(CommentResponseDTO::of).collect(Collectors.toList());
 	}
-	
-	public ResponseEntity getAllReplyComments(@RequestParam("board_no") int board_no, @RequestParam("comment_no") int comment_no) {
+
+	public ResponseEntity getAllReplyComments(@RequestParam("board_no") int board_no,
+			@RequestParam("comment_no") int comment_no) {
 		Response response;
 
-		if (!commentMapper.getAllReplyComments(board_no, comment_no).isEmpty()) {
-			response = new Response("200", "대댓글 리스트 조회 성공", commentMapper.getAllReplyComments(board_no, comment_no).stream()
-					.map(CommentResponseDTO::of).collect(Collectors.toList()));
-			return DefaultResponse.ok(response);
-		} else {
-			response = new Response("200", "대댓글 리스트가 존재하지 않습니다.", null);
-			return DefaultResponse.ok(response);
-		}
-		
+		response = new Response("200", "대댓글 리스트 조회 성공", commentMapper.getAllReplyComments(board_no, comment_no).stream()
+				.map(CommentResponseDTO::of).collect(Collectors.toList()));
+		return DefaultResponse.ok(response);
+
 //		return commentMapper.getAllReplyComments(board_no,comment_no).stream().map(CommentResponseDTO::of).collect(Collectors.toList());
 	}
 
@@ -65,7 +56,7 @@ public class CommentService {
 			response = new Response("400", "댓글 삽입 실패", false);
 			return DefaultResponse.badRequest(response);
 		}
-		
+
 //		return commentMapper.insertComment(newComment) != 0;
 	}
 
@@ -79,12 +70,12 @@ public class CommentService {
 			response = new Response("400", "대댓글 수정 실패", false);
 			return DefaultResponse.badRequest(response);
 		}
-		
-		
+
 //		return commentMapper.insertCommentReply(newComment) != 0;
 	}
-	
-	public ResponseEntity updateComment(@PathVariable("comment_no") int comment_no, @RequestBody UpdateCommentRequestDTO updatedComment) {
+
+	public ResponseEntity updateComment(@PathVariable("comment_no") int comment_no,
+			@RequestBody UpdateCommentRequestDTO updatedComment) {
 		Response response;
 
 		if (commentMapper.updateComment(comment_no, updatedComment) != 0) {
@@ -94,7 +85,7 @@ public class CommentService {
 			response = new Response("400", "댓글 수정 실패", false);
 			return DefaultResponse.badRequest(response);
 		}
-		
+
 //		return commentMapper.updateComment(comment_no, updatedComment) != 0;
 	}
 }
