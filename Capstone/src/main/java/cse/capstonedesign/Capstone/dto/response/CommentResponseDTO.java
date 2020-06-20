@@ -19,6 +19,7 @@ public class CommentResponseDTO {
 	private int user_id;
 	private int community_board_no;
 	private String nickname;
+	private int del_flag;
 
 	public static CommentResponseDTO of(Comment comment) {
 		return CommentResponseDTO.builder()
@@ -30,6 +31,7 @@ public class CommentResponseDTO {
 				.user_id(comment.getUser_id())
 				.community_board_no(comment.getCommunity_board_no())
 				.nickname(comment.getNickname())
+				.del_flag(comment.getDel_flag())
 				.build();
 	}
 }

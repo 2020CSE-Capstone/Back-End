@@ -33,5 +33,13 @@
 		VALUE 
 				(#{user.email}, #{user.nickname}, #{user.age}, #{user.drink_average}, #{user.smoke_average}, #{user.password}, #{user.determination});
 	</insert>
+
+	<select id="isEmailOverlapCheck" resultType="int"> 
+		SELECT EXISTS (SELECT * FROM USER WHERE EMAIL = #{email}) AS SUCCESS;
+	</select>
+	
+	<select id="isNicknameOverlapCheck" resultType="int"> 
+		SELECT EXISTS (SELECT * FROM USER WHERE NICKNAME = #{nickname}) AS SUCCESS;
+	</select>
 	
 </mapper>

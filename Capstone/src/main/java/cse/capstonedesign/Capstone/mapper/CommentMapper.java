@@ -12,6 +12,7 @@ import cse.capstonedesign.Capstone.model.Comment;
 
 @Mapper
 public interface CommentMapper {
+	
 	public List<Comment> getAllComments(@Param("board_no") int board_no);
 	
 	public int getCommentCount(@Param("board_no") int board_no);
@@ -23,4 +24,6 @@ public interface CommentMapper {
 	public int insertCommentReply(@Param("comment_reply") InsertCommentReplyRequestDTO comment_reply);
 	
 	public int updateComment(@Param("comment_no") int comment_no, @Param("updatedComment") UpdateCommentRequestDTO updatedComment);
+	
+	public int deleteComment(@Param("comment_no") int comment_no);
 }

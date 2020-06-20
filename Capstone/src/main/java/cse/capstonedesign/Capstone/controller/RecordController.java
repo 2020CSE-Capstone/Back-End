@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cse.capstonedesign.Capstone.dto.request.InsertDrinkRecordRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.MonthRecordRequestDTO;
 import cse.capstonedesign.Capstone.service.RecordService;
 
 @RestController
@@ -36,13 +38,23 @@ public class RecordController {
 		return recordService.insertDrinkRecord(new_record);
 	}
 
-//	@GetMapping("/{board_no}")
-//	public ResponseEntity getWritingDetailByNo(@PathVariable("board_no") int board_no) {
-//		return communityService.getWritingDetailByNo(board_no);
-//	}
-//
-//	@PostMapping("")
-//	public ResponseEntity insertWriting(@RequestBody InsertWritingRequestDTO newWriting) {
-//		return communityService.insertWriting(newWriting);
-//	}
+	@GetMapping("/drink/total/{user_id}")
+	public ResponseEntity getTotalDrink(@PathVariable("user_id") int user_id) {
+		return recordService.getTotalDrink(user_id);
+	}
+
+	@GetMapping("/smoke/total/{user_id}")
+	public ResponseEntity getTotalSmoke(@PathVariable("user_id") int user_id) {
+		return recordService.getTotalSmoke(user_id);
+	}
+
+	@PostMapping("/drink/month")
+	public ResponseEntity getMonthDrinkRecords(@RequestBody MonthRecordRequestDTO monthDrink) {
+		return recordService.getMonthDrinkRecords(monthDrink);
+	}
+
+	@PostMapping("/smoke/month")
+	public ResponseEntity getMonthSmokeRecords(@RequestBody MonthRecordRequestDTO monthSmoke) {
+		return recordService.getMonthSmokeRecords(monthSmoke);
+	}
 }

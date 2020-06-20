@@ -3,6 +3,7 @@ package cse.capstonedesign.Capstone.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,5 +52,10 @@ public class CommentController {
 	@PutMapping("/{comment_no}")
 	public ResponseEntity updateComment(@PathVariable("comment_no") int comment_no, @RequestBody UpdateCommentRequestDTO updatedComment) {
 		return commentService.updateComment(comment_no, updatedComment);
+	}
+
+	@DeleteMapping("/{comment_no}")
+	public ResponseEntity deleteComment(@PathVariable("comment_no") int comment_no) {
+		return commentService.deleteComment(comment_no);
 	}
 }

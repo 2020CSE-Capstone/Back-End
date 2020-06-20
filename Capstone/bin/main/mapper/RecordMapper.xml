@@ -27,5 +27,49 @@
 		VALUE 
 				(#{record.figure}, #{record.glass}, #{record.drink_date}, #{record.drink_name}, #{record.user_id});
 	</insert>
+
+	<select id="getTotalDrink" resultType="cse.capstonedesign.Capstone.dto.response.DrinkTotalResponseDTO"> 
+		SELECT 
+				SUM(GLASS) as TOTAL_GLASS, (SUM(DRINK_PRICE) * SUM(GLASS)) as TOTAL_PRICE
+		FROM 
+				DRINK_RECORD AS DR LEFT JOIN DRINK_KIND AS DK 
+		ON 
+				DR.DRINK_KIND_DRINK_NAME = DK.DRINK_NAME 
+		WHERE 
+				USER_ID = #{user_id};
+	</select>
+
+	<select id="getTotalSmoke" resultType="cse.capstonedesign.Capstone.dto.response.SmokeTotalResponseDTO"> 
+		SELECT 
+				SUM(PIECE) as TOTAL_PIECE, (SUM(SMOKE_PRICE) * SUM(PIECE)) as TOTAL_PRICE
+		FROM 
+				SMOKE_RECORD AS SR LEFT JOIN SMOKE_KIND AS SK 
+		ON 
+				SR.SMOKE_KIND_SMOKE_NAME = SK.SMOKE_NAME 
+		WHERE 
+				USER_ID = #{user_id};
+	</select>
+	
+	<select id="getMonthDrinkRecords" resultType="cse.capstonedesign.Capstone.model.MonthRecords"> 
+		SELECT 
+				DRINK_DATE as DATE, SUM(GLASS) as TOTAL_AMOUNT 
+		FROM 
+				DRINK_RECORD 
+		WHERE 
+				USER_ID = #{user_id} AND DRINK_DATE LIKE "%${month}%" 
+		GROUP BY 
+				DRINK_DATE;
+	</select>
+	
+	<select id="getMonthSmokeRecords" resultType="cse.capstonedesign.Capstone.model.MonthRecords"> 
+		SELECT 
+				SMOKE_DATE as DATE, SUM(PIECE) as TOTAL_AMOUNT 
+		FROM 
+				SMOKE_RECORD
+		WHERE 
+				USER_ID = #{user_id} AND SMOKE_DATE LIKE "%${month}%" 
+		GROUP BY 
+				SMOKE_DATE;
+	</select>
 	
 </mapper>

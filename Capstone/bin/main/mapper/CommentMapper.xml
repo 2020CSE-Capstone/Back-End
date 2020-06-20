@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cse.capstonedesign.Capstone.mapper.CommentMapper">
+
 	<select id="getAllComments" resultType="cse.capstonedesign.Capstone.model.Comment"> 
 		SELECT 
-				COMMENT_NO, CONTENT, PARENT_COMMENT_NO, SEQ, COMMENT_DATE, USER_ID, COMMUNITY_BOARD_NO, NICKNAME 
+				COMMENT_NO, CONTENT, PARENT_COMMENT_NO, SEQ, COMMENT_DATE, USER_ID, COMMUNITY_BOARD_NO, NICKNAME, DEL_FLAG
 		FROM 
 				COMMENT AS CMT LEFT JOIN USER AS USR 
 		ON 
@@ -17,7 +18,7 @@
 	
 	<select id="getAllReplyComments" resultType="cse.capstonedesign.Capstone.model.Comment"> 
 		SELECT 
-				COMMENT_NO, CONTENT, PARENT_COMMENT_NO, SEQ, COMMENT_DATE, USER_ID, COMMUNITY_BOARD_NO, NICKNAME 
+				COMMENT_NO, CONTENT, PARENT_COMMENT_NO, SEQ, COMMENT_DATE, USER_ID, COMMUNITY_BOARD_NO, NICKNAME, DEL_FLAG 
 		FROM 
 				COMMENT AS CMT LEFT JOIN USER AS USR 
 		ON 
@@ -56,5 +57,9 @@
 	<update id="updateComment" parameterType="cse.capstonedesign.Capstone.model.Comment"> 				
 		UPDATE COMMENT SET CONTENT = #{updatedComment.content} WHERE COMMENT_NO = #{comment_no};
 	</update>
+	
+	<delete id="deleteComment" parameterType="int"> 				
+		UPDATE COMMENT SET DEL_FLAG = 1 WHERE COMMENT_NO = #{comment_no};
+	</delete>
 	
 </mapper>

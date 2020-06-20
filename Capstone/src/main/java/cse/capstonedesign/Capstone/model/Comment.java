@@ -18,4 +18,5 @@ public class Comment {
 	private int user_id;
 	private int community_board_no;
 	private String nickname;
+	private int del_flag;
 }

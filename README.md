@@ -44,13 +44,23 @@ BASE URL : http://13.125.162.225/api/
 
   [5 댓글 수정](#5-댓글-수정)
   
+  [6 댓글 삭제](#6-댓글-삭제)
+  
   <br/>
   
-+ 측정 API
++ 측정 / 기록 API
 
   [1 음주 측정값 리스트](#1-음주-측정값-리스트)
 
   [2 음주 측정값 저장](#2-음주-측정값-저장)
+  
+  [3 음주 총 사용 금액, 마신 잔 수](#3-음주-총-사용-금액,-마신-잔-수)
+  
+  [4 흡연 총 사용 금액, 피운 개비 수](#4-흡연-총-사용-금액,-피운-개비-수)
+  
+  [5 i월 음주 기록 리스트](#5-i월-음주-기록-리스트)
+  
+  [6 i월 흡연 기록 리스트](#6-i월-흡연-기록-리스트)
   
   <br/>
   
@@ -59,6 +69,10 @@ BASE URL : http://13.125.162.225/api/
   [1 로그인](#1-로그인)
 
   [2 회원가입](#2-회원가입)
+  
+  [3 이메일 중복 검사](#3-이메일-중복-검사)
+  
+  [4 닉네임 중복 검사](#4-닉네임-중복-검사)
 
 ---
 
@@ -587,6 +601,41 @@ BASE URL : http://13.125.162.225/api/
 
 <br/>
 
+## 6 댓글 삭제
+
+[목차로 이동](#목차)
+
+| Method | Path                 | Description   |
+| ------ | -------------------- | ------------- |
+| DELETE | comment/{comment_no} | 댓글 삭제하기 |
+
+##### Request URL
+
+```
+"comment_no" : INT
+```
+
+##### Response Body
+
+```
+// 성공 시
+{
+    "status": "200",
+    "message": "댓글 삭제 성공",
+    "data": true
+}
+// 실패 시
+{
+    "status": "400",
+    "message": "댓글 삭제 실패",
+    "data": false
+}
+```
+
+<br/>
+
+<br/>
+
 <br/>
 
 # 측정 API
@@ -676,6 +725,172 @@ BASE URL : http://13.125.162.225/api/
 
 <br/>
 
+## 3 음주 총 사용 금액, 마신 잔 수
+
+[목차로 이동](#목차)
+
+| Method | Path                         | Description                           |
+| ------ | ---------------------------- | ------------------------------------- |
+| GET    | record/drink/total/{user_id} | 술에 쓴 총합 금액과 마신 잔 수를 반환 |
+
+##### Request URL
+
+```
+"user_id" : INT
+```
+
+##### Response Body
+
+```
+{
+    "status": "200",
+    "message": "음주 총합 조회 성공",
+    "data": {
+        "total_glass": INT
+        "total_price": INT
+    }
+}
+```
+
+<br/>
+
+<br/>
+
+## 4 흡연 총 사용 금액, 피운 개비 수
+
+[목차로 이동](#목차)
+
+| Method | Path                         | Description                               |
+| ------ | ---------------------------- | ----------------------------------------- |
+| GET    | record/drink/total/{user_id} | 담배에 쓴 총합 금액과 피운 개비 수를 반환 |
+
+##### Request URL
+
+```
+"user_id" : INT
+```
+
+##### Response Body
+
+```
+{
+    "status": "200",
+    "message": "흡연 총합 조회 성공",
+    "data": {
+        "total_piece": INT
+        "total_price": INT
+    }
+}
+```
+
+<br/>
+
+<br/>
+
+## 5 i월 음주 기록 리스트
+
+[목차로 이동](#목차)
+
+| Method | Path               | Description                      |
+| ------ | ------------------ | -------------------------------- |
+| POST   | record/drink/month | i월에 마신 잔 수 리스트 불러오기 |
+
+##### Request Body
+
+```
+{
+	"user_id" : INT			// 유저 번호
+	"month" : INT			// 조회를 원하는 월
+}
+```
+
+##### Response Body
+
+```
+// 성공 시
+{
+    "status": "200",
+    "message": "월별 기록 리스트 조회 성공",
+    "data": [
+        {
+            "date": "2020.06.08",
+            "total_amount": 27
+        },
+        {
+            "date": "2020.06.09",
+            "total_amount": 31
+        },
+        {
+            "date": "2020.06.10",
+            "total_amount": 30
+        }
+        ...
+    ]
+}
+// 올바르지 않은 달(0이하 13이상)을 조회시
+{
+    "status": "400",
+    "message": "1월 ~ 12월만 조회해주세요.",
+    "data": null
+}
+```
+
+<br/>
+
+<br/>
+
+## 6 i월 흡연 기록 리스트
+
+[목차로 이동](#목차)
+
+| Method | Path               | Description                        |
+| ------ | ------------------ | ---------------------------------- |
+| POST   | record/smoke/month | i월에 피운 개비 수 리스트 불러오기 |
+
+##### Request Body
+
+```
+{
+	"user_id" : INT			// 유저 번호
+	"month" : INT			// 조회를 원하는 월
+}
+```
+
+##### Response Body
+
+```
+// 성공 시
+{
+    "status": "200",
+    "message": "월별 기록 리스트 조회 성공",
+    "data": [
+        {
+            "date": "2020.06.08",
+            "total_amount": 27
+        },
+        {
+            "date": "2020.06.09",
+            "total_amount": 31
+        },
+        {
+            "date": "2020.06.10",
+            "total_amount": 30
+        }
+        ...
+    ]
+}
+// 올바르지 않은 달(0이하 13이상)을 조회시
+{
+    "status": "400",
+    "message": "1월 ~ 12월만 조회해주세요.",
+    "data": null
+}
+```
+
+<br/>
+
+<br/>
+
 <br/>
 
 # 유저 API
@@ -712,7 +927,7 @@ BASE URL : http://13.125.162.225/api/
 {
     "status": "200",
     "message": "기록 리스트 조회 성공",
-    "data": token
+    "data": "Bearer ***************.." (token)
 } 
 ```
 
@@ -756,6 +971,78 @@ BASE URL : http://13.125.162.225/api/
     "data": false
 }
 ```
+
+<br/>
+
+<br/>
+
+## 3 이메일 중복 검사
+
+[목차로 이동](#목차)
+
+| Method | Path               | Description               |
+| ------ | ------------------ | ------------------------- |
+| GET    | user/email/{email} | 사용 중인 이메일인지 검사 |
+
+##### Request URL
+
+```
+"email" : VARCHAR
+```
+
+##### Response Body
+
+```
+// DB에 없는 이메일인 경우
+{
+    "status": "200",
+    "message": "사용 가능한 이메일입니다.",
+    "data": true
+}
+// DB에 있는 이메일인 경우
+{
+    "status": "200",
+    "message": "이미 존재하는 이메일입니다.",
+    "data": false
+}
+```
+
+<br/>
+
+<br/>
+
+## 4 닉네임 중복 검사
+
+[목차로 이동](#목차)
+
+| Method | Path                     | Description               |
+| ------ | ------------------------ | ------------------------- |
+| GET    | user/nickname/{nickname} | 사용 중인 닉네임인지 검사 |
+
+##### Request URL
+
+```
+"nickname" : VARCHAR
+```
+
+##### Response Body
+
+```
+// DB에 없는 닉네임인 경우
+{
+    "status": "200",
+    "message": "사용 가능한 닉네임입니다.",
+    "data": true
+}
+// DB에 있는 닉네임인 경우
+{
+    "status": "200",
+    "message": "이미 존재하는 닉네임입니다.",
+    "data": false
+}
+```
+
+<br/>
 
 <br/>
 

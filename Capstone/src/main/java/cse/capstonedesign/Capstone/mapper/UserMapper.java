@@ -18,4 +18,8 @@ public interface UserMapper {
 	public int findIdByEmail(@Param("email") String email);
 
 	public int signup(@Param("user") SignUpRequestDTO user);
+	
+	public int isEmailOverlapCheck(@Param("email") String email);
+
+	public int isNicknameOverlapCheck(@Param("nickname") String nickname);
 }

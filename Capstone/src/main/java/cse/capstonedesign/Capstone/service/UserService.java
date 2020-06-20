@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -41,6 +43,32 @@ public class UserService {
 		} else {
 			response = new Response("400", "회원가입 실패", false);
 			return DefaultResponse.badRequest(response);
+		}
+    }
+	
+	@GetMapping("/email/{email}")
+    public ResponseEntity isEmailOverlapCheck(@PathVariable("email") String email) {
+        Response response;
+
+		if (userMapper.isEmailOverlapCheck(email) == 0) {
+			response = new Response("200", "사용 가능한 이메일입니다.", true);
+			return DefaultResponse.ok(response);
+		} else {
+			response = new Response("200", "이미 존재하는 이메일입니다.", false);
+			return DefaultResponse.ok(response);
+		}
+    }
+	
+	@GetMapping("/nickname/{nickname}")
+    public ResponseEntity isNicknameOverlapCheck(@PathVariable("nickname") String nickname) {
+        Response response;
+
+		if (userMapper.isNicknameOverlapCheck(nickname) == 0) {
+			response = new Response("200", "사용 가능한 닉네임입니다.", true);
+			return DefaultResponse.ok(response);
+		} else {
+			response = new Response("200", "이미 존재하는 닉네임입니다.", false);
+			return DefaultResponse.ok(response);
 		}
     }
 }

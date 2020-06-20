@@ -88,4 +88,18 @@ public class CommentService {
 
 //		return commentMapper.updateComment(comment_no, updatedComment) != 0;
 	}
+
+	public ResponseEntity deleteComment(@PathVariable("comment_no") int comment_no) {
+		Response response;
+
+		if (commentMapper.deleteComment(comment_no) != 0) {
+			response = new Response("200", "댓글 삭제 성공", true);
+			return DefaultResponse.ok(response);
+		} else {
+			response = new Response("400", "댓글 삭제 실패", false);
+			return DefaultResponse.badRequest(response);
+		}
+
+//		return commentMapper.updateComment(comment_no, updatedComment) != 0;
+	}
 }
