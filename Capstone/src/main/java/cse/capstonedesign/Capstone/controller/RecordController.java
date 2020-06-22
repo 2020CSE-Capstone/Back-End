@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cse.capstonedesign.Capstone.dto.request.InsertDrinkRecordRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.InsertSmokeRecordRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.MonthRecordRequestDTO;
 import cse.capstonedesign.Capstone.service.RecordService;
 
@@ -33,9 +34,14 @@ public class RecordController {
 		return recordService.getAllSmokeRecords(user_id);
 	}
 	
-	@PostMapping("")
+	@PostMapping("/drink")
 	public ResponseEntity insertDrinkRecord(@RequestBody InsertDrinkRecordRequestDTO new_record) {
 		return recordService.insertDrinkRecord(new_record);
+	}
+	
+	@PostMapping("/smoke")
+	public ResponseEntity insertSmokeRecord(@RequestBody InsertSmokeRecordRequestDTO new_record) {
+		return recordService.insertSmokeRecord(new_record);
 	}
 
 	@GetMapping("/drink/total/{user_id}")

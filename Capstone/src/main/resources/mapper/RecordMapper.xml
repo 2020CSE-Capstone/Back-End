@@ -28,6 +28,13 @@
 				(#{record.figure}, #{record.glass}, #{record.drink_date}, #{record.drink_name}, #{record.user_id});
 	</insert>
 
+	<insert id="insertSmokeRecord" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Record"> 
+		INSERT INTO 
+				SMOKE_RECORD(FIGURE, PIECE, SMOKE_DATE, SMOKE_KIND_SMOKE_NAME, USER_ID)
+		VALUE 
+				(#{record.figure}, #{record.piece}, #{record.smoke_date}, #{record.smoke_name}, #{record.user_id});
+	</insert>
+
 	<select id="getTotalDrink" resultType="cse.capstonedesign.Capstone.dto.response.DrinkTotalResponseDTO"> 
 		SELECT 
 				SUM(GLASS) as TOTAL_GLASS, (SUM(DRINK_PRICE) * SUM(GLASS)) as TOTAL_PRICE

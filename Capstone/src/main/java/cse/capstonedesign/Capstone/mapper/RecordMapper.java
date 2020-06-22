@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import cse.capstonedesign.Capstone.dto.request.InsertDrinkRecordRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.InsertSmokeRecordRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.MonthRecordRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.DrinkTotalResponseDTO;
 import cse.capstonedesign.Capstone.dto.response.RecordResponseDTO;
@@ -21,6 +22,8 @@ public interface RecordMapper {
 	public List<Record> getAllSmokeRecords(@Param("user_id") int user_id);
 
 	public int insertDrinkRecord(@Param("record") InsertDrinkRecordRequestDTO record);
+
+	public int insertSmokeRecord(@Param("record") InsertSmokeRecordRequestDTO record);
 
 	public DrinkTotalResponseDTO getTotalDrink(@Param("user_id") int user_id);
 

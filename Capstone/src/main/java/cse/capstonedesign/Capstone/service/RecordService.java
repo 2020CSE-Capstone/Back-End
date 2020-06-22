@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import cse.capstonedesign.Capstone.dto.request.InsertDrinkRecordRequestDTO;
+import cse.capstonedesign.Capstone.dto.request.InsertSmokeRecordRequestDTO;
 import cse.capstonedesign.Capstone.dto.request.MonthRecordRequestDTO;
 import cse.capstonedesign.Capstone.dto.response.DefaultResponse;
 import cse.capstonedesign.Capstone.dto.response.DrinkTotalResponseDTO;
@@ -47,6 +48,18 @@ public class RecordService {
 		Response response;
 
 		if (recordMapper.insertDrinkRecord(new_record) != 0) {
+			response = new Response("200", "기록 삽입 성공", true);
+			return DefaultResponse.ok(response);
+		} else {
+			response = new Response("400", "기록 삽입 실패", false);
+			return DefaultResponse.badRequest(response);
+		}
+	}
+
+	public ResponseEntity insertSmokeRecord(@RequestBody InsertSmokeRecordRequestDTO new_record) {
+		Response response;
+
+		if (recordMapper.insertSmokeRecord(new_record) != 0) {
 			response = new Response("200", "기록 삽입 성공", true);
 			return DefaultResponse.ok(response);
 		} else {

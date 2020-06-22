@@ -18,10 +18,13 @@ public class InsertDrinkRecordRequestDTO {
 	public InsertDrinkRecordRequestDTO() { }
 
 	public InsertDrinkRecordRequestDTO(double figure, int glass, String drink_date, String drink_name, int user_id) {
+		super();
 		this.figure = figure;
 		this.glass = glass;
 		this.drink_date = drink_date;
 		this.drink_name = drink_name;
 		this.user_id = user_id;
 	}
+
+
 }

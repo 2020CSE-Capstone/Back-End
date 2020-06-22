@@ -54,13 +54,17 @@ BASE URL : http://13.125.162.225/api/
 
   [2 음주 측정값 저장](#2-음주-측정값-저장)
   
-  [3 음주 총 사용 금액, 마신 잔 수](#3-음주-총-사용-금액,-마신-잔-수)
+  [3 흡연 측정값 리스트](#3-흡연-측정값-리스트)
   
-  [4 흡연 총 사용 금액, 피운 개비 수](#4-흡연-총-사용-금액,-피운-개비-수)
+  [4 흡연 측정값 저장](#4-흡연-측정값-저장)
   
-  [5 i월 음주 기록 리스트](#5-i월-음주-기록-리스트)
+  [5 음주 총 사용 금액, 마신 잔 수](#5-음주-총-사용-금액,-마신-잔-수)
   
-  [6 i월 흡연 기록 리스트](#6-i월-흡연-기록-리스트)
+  [6 흡연 총 사용 금액, 피운 개비 수](#6-흡연-총-사용-금액,-피운-개비-수)
+  
+  [7 i월 음주 기록 리스트](#7-i월-음주-기록-리스트)
+  
+  [8 i월 흡연 기록 리스트](#8-i월-흡연-기록-리스트)
   
   <br/>
   
@@ -93,6 +97,12 @@ BASE URL : http://13.125.162.225/api/
 | Method | Path             | Description                             |
 | ------ | ---------------- | --------------------------------------- |
 | GET    | community/recent | 가장 최근에 작성된 글부터 항목 불러오기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Response Body
 
@@ -136,6 +146,12 @@ BASE URL : http://13.125.162.225/api/
 | ------ | ----------------- | -------------------------------------------- |
 | GET    | community/popular | 좋아요를 가장 많이 받은 글부터 항목 불러오기 |
 
+##### Request Header
+
+````
+"Authorization": token
+````
+
 ##### Response Body
 
 ````
@@ -177,6 +193,12 @@ BASE URL : http://13.125.162.225/api/
 | Method | Path                       | Description                           |
 | ------ | -------------------------- | ------------------------------------- |
 | GET    | community/mypage/{user_id} | 내가 작성한 게시물 항목 모두 불러오기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request URL
 
@@ -226,6 +248,12 @@ BASE URL : http://13.125.162.225/api/
 | ------ | -------------------- | ------------------------- |
 | GET    | community/{board_no} | 선택한 게시글 자세히 보기 |
 
+##### Request Header
+
+````
+"Authorization": token
+````
+
 ##### Request URL
 
 ```
@@ -262,6 +290,12 @@ BASE URL : http://13.125.162.225/api/
 | Method | Path       | Description     |
 | ------ | ---------- | --------------- |
 | POST   | community/ | 게시글 작성하기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request Body
 
@@ -301,6 +335,12 @@ BASE URL : http://13.125.162.225/api/
 | Method | Path                 | Description     |
 | ------ | -------------------- | --------------- |
 | PUT    | community/{board_no} | 게시글 수정하기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request URL
 
@@ -346,6 +386,12 @@ BASE URL : http://13.125.162.225/api/
 | ------ | -------------------- | --------------- |
 | DELETE | community/{board_no} | 게시글 삭제하기 |
 
+##### Request Header
+
+````
+"Authorization": token
+````
+
 ##### Request URL
 
 ```
@@ -387,6 +433,12 @@ BASE URL : http://13.125.162.225/api/
 | ------ | ------------------ | ------------------------- |
 | GET    | comment/{board_no} | 선택한 게시글 자세히 보기 |
 
+##### Request Header
+
+````
+"Authorization": token
+````
+
 ##### Request URL
 
 ```
@@ -409,6 +461,7 @@ BASE URL : http://13.125.162.225/api/
             "user_id" : INT				// 유저 번호
             "community_board_no" : INT	// 커뮤니티 게시글 번호
             "nickname" : VARCHAR		// 닉네임
+            "del_flag" : INT			// 삭제 여부 (삭제된 덧글 : 1)
         },
         {
             "comment_no" : INT			// 댓글 번호
@@ -419,6 +472,7 @@ BASE URL : http://13.125.162.225/api/
             "user_id" : INT				// 유저 번호
             "community_board_no" : INT	// 커뮤니티 게시글 번호
             "nickname" : VARCHAR		// 닉네임
+            "del_flag" : INT			// 삭제 여부 (삭제된 덧글 : 1)
         }
         ...
     ]
@@ -436,6 +490,12 @@ BASE URL : http://13.125.162.225/api/
 | Method | Path          | Description                                             |
 | ------ | ------------- | ------------------------------------------------------- |
 | GET    | comment/reply | 선택한 댓글의 부모 댓글을 포함한 대댓글 리스트 불러오기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request URL
 
@@ -459,6 +519,7 @@ BASE URL : http://13.125.162.225/api/
             "user_id" : INT				// 유저 번호
             "community_board_no" : INT	// 커뮤니티 게시글 번호
             "nickname" : VARCHAR		// 닉네임
+            "del_flag" : INT			// 삭제 여부 (삭제된 덧글 : 1)
         },
         {
             "comment_no" : INT			// 댓글 번호
@@ -469,6 +530,7 @@ BASE URL : http://13.125.162.225/api/
             "user_id" : INT				// 유저 번호
             "community_board_no" : INT	// 커뮤니티 게시글 번호
             "nickname" : VARCHAR		// 닉네임
+            "del_flag" : INT			// 삭제 여부 (삭제된 덧글 : 1)
         }
         ...
     ]
@@ -486,6 +548,12 @@ BASE URL : http://13.125.162.225/api/
 | Method | Path     | Description   |
 | ------ | -------- | ------------- |
 | POST   | comment/ | 댓글 작성하기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request Body
 
@@ -526,6 +594,12 @@ BASE URL : http://13.125.162.225/api/
 | ------ | ------------- | --------------- |
 | POST   | comment/reply | 대댓글 작성하기 |
 
+##### Request Header
+
+````
+"Authorization": token
+````
+
 ##### Request Body
 
 ````
@@ -565,6 +639,12 @@ BASE URL : http://13.125.162.225/api/
 | Method | Path                 | Description   |
 | ------ | -------------------- | ------------- |
 | PUT    | comment/{comment_no} | 댓글 수정하기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request URL
 
@@ -609,6 +689,12 @@ BASE URL : http://13.125.162.225/api/
 | ------ | -------------------- | ------------- |
 | DELETE | comment/{comment_no} | 댓글 삭제하기 |
 
+##### Request Header
+
+````
+"Authorization": token
+````
+
 ##### Request URL
 
 ```
@@ -632,6 +718,13 @@ BASE URL : http://13.125.162.225/api/
 }
 ```
 
+##### Caution
+
+```
+DEL_FLAG만 1로 바꿉니다.
+※ 기존의 댓글 Response Body에 DEL_FLAG 추가하였음.
+```
+
 <br/>
 
 <br/>
@@ -646,9 +739,15 @@ BASE URL : http://13.125.162.225/api/
 
 [목차로 이동](#목차)
 
-| Method | Path             | Description                             |
-| ------ | ---------------- | --------------------------------------- |
-| GET    | record/{user_id} | 해당 유저의 음주 측정값 리스트 불러오기 |
+| Method | Path                   | Description                             |
+| ------ | ---------------------- | --------------------------------------- |
+| GET    | record/drink/{user_id} | 해당 유저의 음주 측정값 리스트 불러오기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request URL
 
@@ -688,9 +787,15 @@ BASE URL : http://13.125.162.225/api/
 
 [목차로 이동](#목차)
 
-| Method | Path    | Description                    |
-| ------ | ------- | ------------------------------ |
-| POST   | record/ | 유저가 측정한 음주 측정값 저장 |
+| Method | Path          | Description                    |
+| ------ | ------------- | ------------------------------ |
+| POST   | record/drink/ | 유저가 측정한 음주 측정값 저장 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request Body
 
@@ -725,13 +830,114 @@ BASE URL : http://13.125.162.225/api/
 
 <br/>
 
-## 3 음주 총 사용 금액, 마신 잔 수
+## 3 흡연 측정값 리스트
+
+[목차로 이동](#목차)
+
+| Method | Path                   | Description                             |
+| ------ | ---------------------- | --------------------------------------- |
+| GET    | record/smoke/{user_id} | 해당 유저의 흡연 측정값 리스트 불러오기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
+
+##### Request URL
+
+```
+"user_id" : INT
+```
+
+##### Response Body
+
+```
+{
+    "status": "200",
+    "message": "기록 리스트 조회 성공",
+    "data": [
+        {
+            "id": INT,					// 기록 번호
+            "figure": DOUBLE,			// 측정값
+            "piece": INT,				// 개비 수
+            "smoke_date": VARCHAR,		// 핀 날짜
+            "smoke_name": VARCHAR		// 핀 담배 종류
+        },
+        {
+            "id": INT,					// 기록 번호
+            "figure": DOUBLE,			// 측정값
+            "piece": INT,				// 개비 수
+            "smoke_date": VARCHAR,		// 핀 날짜
+            "smoke_name": VARCHAR		// 핀 담배 종류
+        }
+        ...
+    ]
+} 
+```
+
+<br/><br/>
+
+## 4 흡연 측정값 저장
+
+[목차로 이동](#목차)
+
+| Method | Path          | Description                    |
+| ------ | ------------- | ------------------------------ |
+| POST   | record/smoke/ | 유저가 측정한 흡연 측정값 저장 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
+
+##### Request Body
+
+```
+{
+	"figure" : DOUBLE			// 측정값
+	"piece" : INT				// 개비 수
+	"smoke_date" : VARCHAR		// 핀 날짜
+	"smoke_name" : VARCHAR		// 핀 담배 이름
+	"user_id" : INT				// 유저 번호
+}
+```
+
+##### Response Body
+
+```
+// 성공 시
+{
+    "status": "200",
+    "message": "기록 삽입 성공",
+    "data": true
+}
+// 실패 시
+{
+    "status": "400",
+    "message": "기록 삽입 실패",
+    "data": false
+}
+```
+
+<br/>
+
+<br/>
+
+## 5 음주 총 사용 금액, 마신 잔 수
 
 [목차로 이동](#목차)
 
 | Method | Path                         | Description                           |
 | ------ | ---------------------------- | ------------------------------------- |
 | GET    | record/drink/total/{user_id} | 술에 쓴 총합 금액과 마신 잔 수를 반환 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request URL
 
@@ -756,13 +962,19 @@ BASE URL : http://13.125.162.225/api/
 
 <br/>
 
-## 4 흡연 총 사용 금액, 피운 개비 수
+## 6 흡연 총 사용 금액, 피운 개비 수
 
 [목차로 이동](#목차)
 
 | Method | Path                         | Description                               |
 | ------ | ---------------------------- | ----------------------------------------- |
-| GET    | record/drink/total/{user_id} | 담배에 쓴 총합 금액과 피운 개비 수를 반환 |
+| GET    | record/smoke/total/{user_id} | 담배에 쓴 총합 금액과 피운 개비 수를 반환 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request URL
 
@@ -787,13 +999,19 @@ BASE URL : http://13.125.162.225/api/
 
 <br/>
 
-## 5 i월 음주 기록 리스트
+## 7 i월 음주 기록 리스트
 
 [목차로 이동](#목차)
 
 | Method | Path               | Description                      |
 | ------ | ------------------ | -------------------------------- |
 | POST   | record/drink/month | i월에 마신 잔 수 리스트 불러오기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request Body
 
@@ -839,13 +1057,19 @@ BASE URL : http://13.125.162.225/api/
 
 <br/>
 
-## 6 i월 흡연 기록 리스트
+## 8 i월 흡연 기록 리스트
 
 [목차로 이동](#목차)
 
 | Method | Path               | Description                        |
 | ------ | ------------------ | ---------------------------------- |
 | POST   | record/smoke/month | i월에 피운 개비 수 리스트 불러오기 |
+
+##### Request Header
+
+````
+"Authorization": token
+````
 
 ##### Request Body
 
@@ -908,8 +1132,8 @@ BASE URL : http://13.125.162.225/api/
 ##### Test ID
 
 ```
-"email" : admin
-"password" : 1234
+"email" : "admin"
+"password" : "1234"
 ```
 
 ##### Request URL
