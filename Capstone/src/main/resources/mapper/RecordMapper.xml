@@ -37,7 +37,7 @@
 
 	<select id="getTotalDrink" resultType="cse.capstonedesign.Capstone.dto.response.DrinkTotalResponseDTO"> 
 		SELECT 
-				SUM(GLASS) as TOTAL_GLASS, (SUM(DRINK_PRICE) * SUM(GLASS)) as TOTAL_PRICE
+				SUM(GLASS) as TOTAL_GLASS, (DRINK_PRICE * SUM(GLASS)) as TOTAL_PRICE
 		FROM 
 				DRINK_RECORD AS DR LEFT JOIN DRINK_KIND AS DK 
 		ON 
@@ -48,7 +48,7 @@
 
 	<select id="getTotalSmoke" resultType="cse.capstonedesign.Capstone.dto.response.SmokeTotalResponseDTO"> 
 		SELECT 
-				SUM(PIECE) as TOTAL_PIECE, (SUM(SMOKE_PRICE) * SUM(PIECE)) as TOTAL_PRICE
+				SUM(PIECE) as TOTAL_PIECE, (SMOKE_PRICE * SUM(PIECE)) as TOTAL_PRICE
 		FROM 
 				SMOKE_RECORD AS SR LEFT JOIN SMOKE_KIND AS SK 
 		ON 
