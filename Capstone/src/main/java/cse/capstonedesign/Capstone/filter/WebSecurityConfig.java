@@ -45,8 +45,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 					.authorizeRequests()
 					.antMatchers("/api/user/**").permitAll()
-//					.antMatchers(HttpMethod.POST, "/api/user/signup").permitAll()
-//					.antMatchers(HttpMethod.POST, "/api/user/email/").permitAll()
 					.antMatchers("/login").permitAll()
 					.antMatchers("/profile/**").authenticated() // authenticated( ) : 로그인한 모든 사용자의 접근을 허용합니다.
 					.antMatchers("/admin/**").hasRole("ADMIN") // hasRole( ) : 로그인한 사용자 중 해당 ROLE을 가진 사용자만 접근을 허용합니다.
@@ -55,23 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.anyRequest().authenticated()
 				.and()
 					.addFilter(new JWTLoginFilter(authenticationManager()))
-//					.addFilterAt(getAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 					.addFilter(new JWTAuthenticationFilter2(authenticationManager()));
-	}
-
-	protected CustomUserPasswordAuthenticationFilter getAuthenticationFilter() {
-		CustomUserPasswordAuthenticationFilter authFilter = new CustomUserPasswordAuthenticationFilter();
-
-		try {
-			authFilter.setFilterProcessesUrl("/api/user/login");
-			authFilter.setAuthenticationManager(this.authenticationManagerBean());
-			authFilter.setUsernameParameter("email");
-			authFilter.setPasswordParameter("password");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return authFilter;
 	}
 
 	@Bean

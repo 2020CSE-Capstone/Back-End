@@ -28,7 +28,7 @@
 				(#{record.figure}, #{record.glass}, #{record.drink_date}, #{record.drink_name}, #{record.user_id});
 	</insert>
 
-	<insert id="insertSmokeRecord" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.Record"> 
+	<insert id="insertSmokeRecord" useGeneratedKeys="true" parameterType="cse.capstonedesign.Capstone.model.SmokeRecord"> 
 		INSERT INTO 
 				SMOKE_RECORD(FIGURE, PIECE, SMOKE_DATE, SMOKE_KIND_SMOKE_NAME, USER_ID)
 		VALUE 

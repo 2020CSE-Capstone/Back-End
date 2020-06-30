@@ -42,16 +42,6 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse res)
 			throws AuthenticationException {
-//		try {
-//			LoginRequestDTO user = new ObjectMapper().readValue(request.getInputStream(), LoginRequestDTO.class);
-//
-//			System.out.println(user.getEmail() + user.getPasauthenticationTokensword()+ "로그인 인증 성공");
-//			return authenticationManager.authenticate(
-//					new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), new ArrayList<>()));
-//		} catch (IOException e) {
-//			System.out.println("로그인 인증 실패");
-//			throw new RuntimeException(e);
-//		}
 		
 		log.info("----------------------------");
 		LoginRequestDTO credentials = null;

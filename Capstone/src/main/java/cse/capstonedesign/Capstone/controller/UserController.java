@@ -43,16 +43,15 @@ public class UserController {
 		String email = login.getEmail();
 		String password = login.getPassword();
 
-		// 처음에 email과 password를 통해 UsernamePasswordAuthenticationToken을 만듭니다.
+		// 처음에 email과 password를 통해 UsernamePasswordAuthenticationToken을 만든다.
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password);
-		 // 다음은 AuthenticationManager의 authenticate 메소드에 위에서 만든 token을 파라미터로 하여 인증을 진행합니다. 이 때 SpringSecurity 설정한 인증이 적용됩니다.
+		 // 다음은 AuthenticationManager의 authenticate 메소드에 위에서 만든 token을 파라미터로 하여 인증을 진행한다. 이 때 SpringSecurity 설정한 인증이 적용된다
 		Authentication authentication = authenticationManager.authenticate(authenticationToken); 
-		// 인증받은 결과를 SecurityContextHolder에서 getContext()를 통해 context를 받아온 후, 이 context에 인증 결과를 set 해줍니다. 이로써 서버의 SecurityContext에는 인증값이 설정됩니다.
+		// 인증받은 결과를 SecurityContextHolder에서 getContext()를 통해 context를 받아온 후, 이 context에 인증 결과를 set 해준다. 이로써 서버의 SecurityContext에는 인증값이 설정완료
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
-		// email로 id 가져오기. 토큰에 넣을 거임
+		// email로 토큰에 넣을 id 가져오기
 		int user_id = userService.findIdByEmail(email);
-//		System.out.println(user_id);
 
 		// 토큰 생성
 		String token = JWT.create()
@@ -61,9 +60,6 @@ public class UserController {
 				.withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
 				.sign(Algorithm.HMAC512(JwtProperties.SECRET.getBytes()));
 		
-//		res.setHeader("Authorization", JwtProperties.TOKEN_PREFIX + token);
-//		System.out.println(JwtProperties.TOKEN_PREFIX + token);
-//		return JwtProperties.TOKEN_PREFIX + token;
 		return DefaultResponse.ok(new Response("200", "로그인 성공", JwtProperties.TOKEN_PREFIX + token));
 	}
 	

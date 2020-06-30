@@ -43,5 +43,4 @@ public class UserPrincipalDetailsService implements UserDetailsService {
 		roles.forEach(role -> list.add(new SimpleGrantedAuthority(ROLE_PREFIX + role)));
 		return list;
 	}
-
 }

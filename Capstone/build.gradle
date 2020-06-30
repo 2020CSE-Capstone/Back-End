@@ -44,11 +44,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-	// implementation group: 'org.apache.httpcomponents', name: 'httpclient-osgi', version: '4.5.12'
 	implementation group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.7'
-	
-	/* jpa */
-	// implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 
 test {
